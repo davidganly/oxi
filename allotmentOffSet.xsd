@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="allotmentoffset.fidelio.1.0" xmlns="allotmentoffset.fidelio.1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="InventoryBlockOffset" type = "InventoryBlockOffset">
+		<xs:annotation>
+			<xs:documentation>InventoryBlockOffset schema</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="InventoryBlockOffset">
+		<xs:sequence>
+			<xs:element name="HotelReference" type="HotelReference" minOccurs="0"/>
+			<xs:element name="inventoryBlockGroupingCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="mfResortAllotmentId" type="xs:string" minOccurs="0"/>
+			<xs:element name="mfAllotmentId" type="xs:string" minOccurs="0"/>
+			<xs:element name="BlockOffsetTypes" type="BlockOffsetTypes" minOccurs="0"/>
+			<xs:element name="OffsetRateCodes" type="OffsetRateCodes" minOccurs="0"/>
+			<xs:element name="OffsetPackages" type="OffsetPackages" minOccurs="0"/>
+			<xs:element name="BlockOffsets" type="BlockOffsets" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="mfOffsetMessageType" type="xs:string" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="HotelReference">
+		<xs:sequence>
+			<xs:element name="chainCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="hotelCode" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BlockOffsetTypes">
+		<xs:sequence>
+			<xs:element name="BlockOffsetType" type="BlockOffsetType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BlockOffsetType">
+		<xs:sequence>
+		</xs:sequence>
+		<xs:attribute name="actionType" type="actionType" use="optional"/>
+		<xs:attribute name="ignoreOffset" type="xs:boolean" use="optional"/>
+		<xs:attribute name="mfInactiveDate" type="xs:dateTime" use="optional"/>
+		<xs:attribute name="offsetType" type="xs:string" use="required"/>
+	</xs:complexType>
+	<xs:simpleType name="actionType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="NA"/>
+			<xs:enumeration value="NEW"/>
+			<xs:enumeration value="CHANGE"/>
+			<xs:enumeration value="DELETE"/>
+			<xs:enumeration value="SYNC"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="OffsetRateCodes">
+		<xs:sequence>
+			<xs:element name="OffsetRateCode" type="OffsetRateCode" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="OffsetRateCode">
+		<xs:sequence>
+		</xs:sequence>
+		<xs:attribute name="actionType" type="actionType" use="optional"/>
+		<xs:attribute name="offsetType" type="xs:string" use="required"/>
+		<xs:attribute name="rateType" type="xs:string" use="required"/>
+		<xs:attribute name="rateCode" type="xs:string" use="required"/>
+		<xs:attribute name="rateBeginDate" type="xs:date" use="optional"/>
+		<xs:attribute name="rateEndDate" type="xs:date" use="optional"/>
+		<xs:attribute name="ratePrimary" type="xs:boolean" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="OffsetPackages">
+		<xs:sequence>
+			<xs:element name="OffsetPackage" type="OffsetPackage" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="OffsetPackage">
+		<xs:sequence>
+			<xs:element name="mfPackage" type="xs:string"/>
+			<xs:element name="quantity" type="xs:int"/>
+			<xs:element name="quantityExcluded" type="xs:int" minOccurs="0"/>
+			<xs:element name="ratePlanCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="TimeSpan" type="TimeSpan" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="actionType" type="actionType" use="optional"/>
+		<xs:attribute name="offsetType" type="xs:string" use="required"/>
+		<xs:attribute name="packageSource" type="xs:string" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="TimeSpan">
+		<xs:sequence>
+			<xs:element name="startTime" type="xs:date" minOccurs="0"/>
+			<xs:element name="numberOfTimeUnits" type="xs:int" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="timeUnitType" type="timeUnitType" use="optional" default="DAY"/>
+	</xs:complexType>
+	<xs:simpleType name="timeUnitType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="NA"/>
+			<xs:enumeration value="YEAR"/>
+			<xs:enumeration value="MONTH"/>
+			<xs:enumeration value="WEEK"/>
+			<xs:enumeration value="DAY"/>
+			<xs:enumeration value="HOUR"/>
+			<xs:enumeration value="MINUTE"/>
+			<xs:enumeration value="SECOND"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="BlockOffsets">
+		<xs:sequence>
+			<xs:element name="BlockOffset" type="BlockOffset" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BlockOffset">
+		<xs:sequence>
+			<xs:element name="inventoryCode" type="xs:string"/>
+			<xs:element name="mfInventoryDate" type="xs:date"/>
+			<xs:element name="mfRate1" type="fixed144" minOccurs="0"/>
+			<xs:element name="mfRate2" type="fixed144" minOccurs="0"/>
+			<xs:element name="mfRate3" type="fixed144" minOccurs="0"/>
+			<xs:element name="mfRate4" type="fixed144" minOccurs="0"/>
+			<xs:element name="mfRateAddOn" type="fixed144" minOccurs="0"/>
+			<xs:element name="mfRateChild" type="fixed144" minOccurs="0"/>
+			<xs:element name="mfProjectedOcc1" type="xs:int" minOccurs="0"/>
+			<xs:element name="mfProjectedOcc2" type="xs:int" minOccurs="0"/>
+			<xs:element name="mfProjectedOcc3" type="xs:int" minOccurs="0"/>
+			<xs:element name="mfProjectedOcc4" type="xs:int" minOccurs="0"/>
+			<xs:element name="mfPickedUpOcc1" type="xs:int" minOccurs="0"/>
+			<xs:element name="mfPickedUpOcc2" type="xs:int" minOccurs="0"/>
+			<xs:element name="mfPickedUpOcc3" type="xs:int" minOccurs="0"/>
+			<xs:element name="mfPickedUpOcc4" type="xs:int" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="actionType" type="actionType" use="optional"/>
+		<xs:attribute name="offsetType" type="xs:string" use="required"/>
+	</xs:complexType>
+	<xs:simpleType name="fixed144">
+		<xs:restriction base="xs:decimal">
+			<xs:totalDigits value="14"/>
+			<xs:fractionDigits value="4"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

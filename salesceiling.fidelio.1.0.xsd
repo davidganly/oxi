@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="salesceiling.fidelio.1.0" xmlns="salesceiling.fidelio.1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="SalesCeiling" type = "SalesCeiling">
+		<xs:annotation>
+			<xs:documentation>SalesCeiling schema</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="SalesCeiling">
+		<xs:sequence>
+			<xs:element name="HotelReference" type="HotelReference"/>
+			<xs:element name="CeilingBoundary" type="CeilingBoundary"/>
+			<xs:element name="CeilingDetails" type="CeilingDetails" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="ceilingMessageType" type="ceilingMessageType" use="required"/>
+	</xs:complexType>
+	<xs:simpleType name="ceilingMessageType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="RESYNC"/>
+			<xs:enumeration value="HOUSE"/>
+			<xs:enumeration value="ROOMTYPE"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="HotelReference">
+		<xs:sequence>
+			<xs:element name="chainCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="hotelCode" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CeilingBoundary">
+		<xs:sequence>
+			<xs:element name="beginDate" type="xs:date"/>
+			<xs:element name="endDate" type="xs:date"/>
+			<xs:element name="roomType" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CeilingDetails">
+		<xs:sequence>
+			<xs:element name="CeilingDetail" type="CeilingDetail" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CeilingDetail">
+		<xs:sequence>
+			<xs:element name="beginDate" type="xs:date"/>
+			<xs:element name="endDate" type="xs:date"/>
+			<xs:element name="quantity" type="xs:int"/>
+			<xs:element name="roomType" type="xs:string" minOccurs="0"/>
+			<xs:element name="restricted" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="cutoffDate" type="xs:date" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="InventoryItems.fidelio.1.0" xmlns="InventoryItems.fidelio.1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="ReservedInvItems" type = "ReservedInvItems">
+		<xs:annotation>
+			<xs:documentation>ReservedInvItems schema</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="ReservedInvItems">
+		<xs:sequence>
+			<xs:element name="HotelReference" type="HotelReference"/>
+			<xs:element name="beginDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="endDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="ItemReservations" type="ItemReservations" minOccurs="0"/>
+			<xs:element name="ItemAllotments" type="ItemAllotments" minOccurs="0"/>
+			<xs:element name="ItemEvents" type="ItemEvents" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="messageType" type="xs:string" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="HotelReference">
+		<xs:sequence>
+			<xs:element name="chainCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="hotelCode" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ItemReservations">
+		<xs:sequence>
+			<xs:element name="ItemReservation" type="ItemReservation" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ItemReservation">
+		<xs:sequence>
+			<xs:element name="confirmationID" type="xs:string" minOccurs="0"/>
+			<xs:element name="reservationID" type="xs:string" minOccurs="0"/>
+			<xs:element name="mfLegNumbers" type="xs:string" minOccurs="0"/>
+			<xs:element name="InvItems" type="InvItems" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="actionType" type="actionType" use="optional"/>
+	</xs:complexType>
+	<xs:simpleType name="actionType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="NA"/>
+			<xs:enumeration value="NEW"/>
+			<xs:enumeration value="CHANGE"/>
+			<xs:enumeration value="DELETE"/>
+			<xs:enumeration value="SYNC"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="InvItems">
+		<xs:sequence>
+			<xs:element name="InvItem" type="InvItem" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="InvItem">
+		<xs:sequence>
+			<xs:element name="item" type="xs:string"/>
+			<xs:element name="quantity" type="xs:int" minOccurs="0"/>
+			<xs:element name="beginDateTime" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="endDateTime" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="setUpTime" type="xs:int" minOccurs="0"/>
+			<xs:element name="setDownTime" type="xs:int" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="type" type="xs:string" use="optional"/>
+		<xs:attribute name="deductInventory" type="xs:boolean" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="ItemAllotments">
+		<xs:sequence>
+			<xs:element name="ItemAllotment" type="ItemAllotment" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ItemAllotment">
+		<xs:sequence>
+			<xs:element name="inventoryBlockGroupingCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="mfResortAllotmentId" type="xs:string" minOccurs="0"/>
+			<xs:element name="mfAllotmentId" type="xs:string" minOccurs="0"/>
+			<xs:element name="InvItems" type="InvItems" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="actionType" type="actionType" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="ItemEvents">
+		<xs:sequence>
+			<xs:element name="ItemEvent" type="ItemEvent" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ItemEvent">
+		<xs:sequence>
+			<xs:element name="eventId" type="xs:string" minOccurs="0"/>
+			<xs:element name="resortEventId" type="xs:string" minOccurs="0"/>
+			<xs:element name="InvItems" type="InvItems" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="actionType" type="actionType" use="optional"/>
+	</xs:complexType>
+</xs:schema>

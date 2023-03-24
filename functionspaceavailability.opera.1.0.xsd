@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="functionspaceavailability.opera.1.0" xmlns="functionspaceavailability.opera.1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="FunctionSpaceAvailability" type = "FunctionSpaceAvailability">
+		<xs:annotation>
+			<xs:documentation>FunctionSpaceAvailability schema</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="FunctionSpaceAvailability">
+		<xs:sequence>
+			<xs:element name="hotelCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="ResyncTimeSpan" type="ResyncTimeSpan" minOccurs="0"/>
+			<xs:element name="FunctionSpaceStates" type="FunctionSpaceStates" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ResyncTimeSpan">
+		<xs:sequence>
+			<xs:element name="beginTime" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="endTime" type="xs:dateTime" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="FunctionSpaceStates">
+		<xs:sequence>
+			<xs:element name="FunctionSpaceState" type="FunctionSpaceState" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="FunctionSpaceState">
+		<xs:sequence>
+			<xs:element name="roomID" type="xs:string" minOccurs="0"/>
+			<xs:element name="beginTime" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="endTime" type="xs:dateTime" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="state" type="state" use="optional"/>
+	</xs:complexType>
+	<xs:simpleType name="state">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="AVAILABLE"/>
+			<xs:enumeration value="UNAVAILABLE"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

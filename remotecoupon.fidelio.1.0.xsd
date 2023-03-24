@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="remotecoupon.fidelio.1.0" xmlns="remotecoupon.fidelio.1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="RemoteCoupon" type = "RemoteCoupon">
+		<xs:annotation>
+			<xs:documentation>RemoteCoupon schema</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="RemoteCoupon">
+		<xs:sequence>
+			<xs:element name="CouponErrors" type="CouponErrors" minOccurs="0"/>
+			<xs:element name="HotelReference" type="HotelReference"/>
+			<xs:element name="CouponCodes" type="CouponCodes" minOccurs="0"/>
+			<xs:element name="CouponDetails" type="CouponDetails" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="action" type="action" use="required"/>
+		<xs:attribute name="languageID" type="xs:string" use="required"/>
+	</xs:complexType>
+	<xs:simpleType name="action">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="GETRQ"/>
+			<xs:enumeration value="GETRSP"/>
+			<xs:enumeration value="APPLYRQ"/>
+			<xs:enumeration value="APPLYRSP"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="CouponErrors">
+		<xs:sequence>
+			<xs:element name="CouponError" type="CouponError" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CouponError">
+		<xs:sequence>
+			<xs:element name="fMsgCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="fMsgString" type="xs:string" minOccurs="0"/>
+			<xs:element name="errorText" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="HotelReference">
+		<xs:sequence>
+			<xs:element name="chainCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="hotelCode" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CouponCodes">
+		<xs:sequence>
+			<xs:element name="CouponCode" type="CouponCode" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CouponCode">
+		<xs:sequence>
+			<xs:element name="code" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CouponDetails">
+		<xs:sequence>
+			<xs:element name="CouponDetail" type="CouponDetail" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CouponDetail">
+		<xs:sequence>
+			<xs:element name="promotionType" type="xs:string"/>
+			<xs:element name="code" type="xs:string"/>
+			<xs:element name="resort" type="xs:string"/>
+			<xs:element name="promotionCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="PromotionDescription" type="xs:string" minOccurs="0"/>
+			<xs:element name="status" type="xs:string" minOccurs="0"/>
+			<xs:element name="couponAvailable" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="inactive" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="voucherBenefitCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="databaseID" type="xs:string" minOccurs="0"/>
+			<xs:element name="mfConfirmationLegNo" type="xs:int" minOccurs="0"/>
+			<xs:element name="confirmationID" type="xs:string" minOccurs="0"/>
+			<xs:element name="reservationID" type="xs:string" minOccurs="0"/>
+			<xs:element name="reservationResort" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="couponAction" type="couponAction" use="optional"/>
+	</xs:complexType>
+	<xs:simpleType name="couponAction">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="CONSUMECOUPON"/>
+			<xs:enumeration value="RELEASECOUPON"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

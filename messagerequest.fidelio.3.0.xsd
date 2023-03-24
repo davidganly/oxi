@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="messagerequest.fidelio.3.0" xmlns="messagerequest.fidelio.3.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="MessageRequest" type = "MessageRequest">
+		<xs:annotation>
+			<xs:documentation>MessageRequest schema</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="MessageRequest">
+		<xs:sequence>
+			<xs:element name="messageType" type="xs:string"/>
+			<xs:element name="keyId" type="xs:string"/>
+			<xs:element name="HotelReference" type="HotelReference"/>
+			<xs:element name="RequestDateRange" type="RequestDateRange"/>
+			<xs:element name="RequestItems" type="RequestItems"/>
+		</xs:sequence>
+		<xs:attribute name="requestId" type="xs:string" use="required"/>
+		<xs:attribute name="timeStamp" type="xs:dateTime" use="required"/>
+		<xs:attribute name="responseDetail" type="xs:string" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="HotelReference">
+		<xs:sequence>
+			<xs:element name="chainCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="hotelCode" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RequestDateRange">
+		<xs:sequence>
+		</xs:sequence>
+		<xs:attribute name="dateType" type="xs:string" use="required"/>
+		<xs:attribute name="beginDate" type="xs:date" use="required"/>
+		<xs:attribute name="endDate" type="xs:date" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="RequestItems">
+		<xs:sequence>
+			<xs:element name="RequestItem" type="RequestItem" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RequestItem">
+		<xs:sequence>
+		</xs:sequence>
+		<xs:attribute name="itemContext" type="itemContext" use="optional"/>
+		<xs:attribute name="itemType" type="xs:string" use="required"/>
+		<xs:attribute name="itemCode" type="xs:string" use="required"/>
+		<xs:attribute name="subItemCode" type="xs:string" use="optional"/>
+	</xs:complexType>
+	<xs:simpleType name="itemContext">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="REQUESTER"/>
+			<xs:enumeration value="RESPONDER"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

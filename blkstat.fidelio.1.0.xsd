@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="blkstat.fidelio.1.0" xmlns="blkstat.fidelio.1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="DAYBLKStat" type = "DAYBLKStat">
+		<xs:annotation>
+			<xs:documentation>DAYBLKStat schema</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="DAYBLKStat">
+		<xs:sequence>
+			<xs:element name="HotelReference" type="HotelReference"/>
+			<xs:element name="DAYStat" type="DAYStat"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="HotelReference">
+		<xs:sequence>
+			<xs:element name="chainCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="hotelCode" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DAYStat">
+		<xs:sequence>
+			<xs:element name="BLKStats" type="BLKStats"/>
+		</xs:sequence>
+		<xs:attribute name="datum" type="xs:dateTime" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="BLKStats">
+		<xs:sequence>
+			<xs:element name="BLKStat" type="BLKStat" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BLKStat">
+		<xs:sequence>
+			<xs:element name="RTStats" type="RTStats"/>
+		</xs:sequence>
+		<xs:attribute name="blockCode" type="xs:string" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="RTStats">
+		<xs:sequence>
+			<xs:element name="RTStat" type="RTStat" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RTStat">
+		<xs:sequence>
+			<xs:element name="cutoffDate" type="xs:dateTime"/>
+			<xs:element name="pickedUp" type="xs:int"/>
+			<xs:element name="roomRevenue" type="fixed144"/>
+			<xs:element name="netRoomRevenue" type="fixed144"/>
+		</xs:sequence>
+		<xs:attribute name="roomType" type="xs:string" use="optional"/>
+	</xs:complexType>
+	<xs:simpleType name="fixed144">
+		<xs:restriction base="xs:decimal">
+			<xs:totalDigits value="14"/>
+			<xs:fractionDigits value="4"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="ecertificatemr.fidelio.1.0" xmlns="ecertificatemr.fidelio.1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ecertificate="ecertificate.fidelio.1.0" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="ecertificate.fidelio.1.0" schemaLocation="ecertificate.fidelio.1.0.xsd"/>
+	<xs:element name="MultiResortECertificate" type = "MultiResortECertificate">
+		<xs:annotation>
+			<xs:documentation>MultiResortECertificate schema</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="MultiResortECertificate">
+		<xs:sequence>
+			<xs:element ref="ecertificate:ECertificate"/>
+			<xs:element name="ResortList" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

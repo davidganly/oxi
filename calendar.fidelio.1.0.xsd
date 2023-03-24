@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="calendar.fidelio.1.0" xmlns="calendar.fidelio.1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="Calendar" type = "Calendar">
+		<xs:annotation>
+			<xs:documentation>Calendar schema</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="Calendar">
+		<xs:sequence>
+			<xs:element name="HotelReference" type="HotelReference"/>
+			<xs:element name="CalendarDayTypes" type="CalendarDayTypes" minOccurs="0"/>
+			<xs:element name="CalendarEvents" type="CalendarEvents" minOccurs="0"/>
+			<xs:element name="CalendarSeasons" type="CalendarSeasons" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="HotelReference">
+		<xs:sequence>
+			<xs:element name="chainCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="hotelCode" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CalendarDayTypes">
+		<xs:sequence>
+			<xs:element name="CalendarItem" type="CalendarItem" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CalendarItem">
+		<xs:sequence>
+			<xs:element name="TimeSpan" type="TimeSpan"/>
+			<xs:element name="DaysOfWeek" type="DaysOfWeek"/>
+		</xs:sequence>
+		<xs:attribute name="itemCode" type="xs:string" use="optional"/>
+		<xs:attribute name="timeStamp" type="xs:dateTime" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="TimeSpan">
+		<xs:sequence>
+			<xs:element name="startTime" type="xs:dateTime"/>
+			<xs:element name="numberOfTimeUnits" type="xs:int"/>
+		</xs:sequence>
+		<xs:attribute name="timeUnitType" type="timeUnitType" use="optional" default="DAY"/>
+	</xs:complexType>
+	<xs:simpleType name="timeUnitType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="NA"/>
+			<xs:enumeration value="YEAR"/>
+			<xs:enumeration value="MONTH"/>
+			<xs:enumeration value="WEEK"/>
+			<xs:enumeration value="DAY"/>
+			<xs:enumeration value="HOUR"/>
+			<xs:enumeration value="MINUTE"/>
+			<xs:enumeration value="SECOND"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="DaysOfWeek">
+		<xs:sequence>
+			<xs:element name="monday" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="tuesday" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="wednesday" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="thursday" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="friday" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="saturday" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="sunday" type="xs:boolean" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CalendarEvents">
+		<xs:sequence>
+			<xs:element name="CalendarItem" type="CalendarItem" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CalendarSeasons">
+		<xs:sequence>
+			<xs:element name="CalendarItem" type="CalendarItem" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

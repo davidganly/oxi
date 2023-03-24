@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="financialtransaction.fidelio.4.0" xmlns="financialtransaction.fidelio.4.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:profile="profile.fidelio.3.0" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="profile.fidelio.3.0" schemaLocation="profile.fidelio.3.0.xsd"/>
+	<xs:element name="FinancialTransaction" type = "FinancialTransaction">
+		<xs:annotation>
+			<xs:documentation>FinancialTransaction schema</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="FinancialTransaction">
+		<xs:sequence>
+			<xs:element name="HotelReference" type="HotelReference"/>
+			<xs:element name="reservationID" type="xs:string" minOccurs="0"/>
+			<xs:element name="confirmationID" type="xs:string" minOccurs="0"/>
+			<xs:element name="mfConfirmationLegNo" type="xs:int" minOccurs="0"/>
+			<xs:element name="FinTransactions" type="FinTransactions"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="HotelReference">
+		<xs:sequence>
+			<xs:element name="chainCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="hotelCode" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="FinTransactions">
+		<xs:sequence>
+			<xs:element name="FinTransaction" type="FinTransaction" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="FinTransaction">
+		<xs:sequence>
+			<xs:element ref="profile:CreditCard" minOccurs="0"/>
+			<xs:element name="postingDate" type="xs:dateTime" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="transactionId" type="xs:string" use="required"/>
+		<xs:attribute name="transactionType" type="transactionType" use="required"/>
+		<xs:attribute name="amount" type="fixed144" use="required"/>
+		<xs:attribute name="currencyCode" type="xs:string" use="optional"/>
+		<xs:attribute name="transactionCode" type="xs:string" use="optional"/>
+		<xs:attribute name="description" type="xs:string" use="optional"/>
+		<xs:attribute name="approvalCode" type="xs:string" use="optional"/>
+		<xs:attribute name="vendorTransactionId" type="xs:string" use="optional"/>
+		<xs:attribute name="authorizationSequenceNo" type="xs:string" use="optional"/>
+	</xs:complexType>
+	<xs:simpleType name="fixed144">
+		<xs:restriction base="xs:decimal">
+			<xs:totalDigits value="14"/>
+			<xs:fractionDigits value="4"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="transactionType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="DEPOSIT"/>
+			<xs:enumeration value="REFUND"/>
+			<xs:enumeration value="CHARGE"/>
+			<xs:enumeration value="OTHER"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

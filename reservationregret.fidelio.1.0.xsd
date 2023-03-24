@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="reservationregret.fidelio.1.0" xmlns="reservationregret.fidelio.1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:profile="profile.fidelio.4.0" xmlns:udf="udf.fidelio.2.0" xmlns:udfdefinition="udfdefinition.fidelio.2.0" xmlns:relationship="relationship.fidelio.3.0" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="profile.fidelio.4.0" schemaLocation="profile.fidelio.4.0.xsd"/>
+	<xs:import namespace="udf.fidelio.2.0" schemaLocation="udf.fidelio.2.0.xsd"/>
+	<xs:import namespace="udfdefinition.fidelio.2.0" schemaLocation="udfdefinition.fidelio.2.0.xsd"/>
+	<xs:import namespace="relationship.fidelio.3.0" schemaLocation="relationship.fidelio.3.0.xsd"/>
+	<xs:element name="ReservationRegret" type = "ReservationRegret">
+		<xs:annotation>
+			<xs:documentation>ReservationRegret schema</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="ReservationRegret">
+		<xs:sequence>
+			<xs:element name="HotelReference" type="HotelReference"/>
+			<xs:element name="reservationRegretId" type="xs:string"/>
+			<xs:element name="arrivalDate" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="nights" type="xs:int" minOccurs="0"/>
+			<xs:element name="noOfRooms" type="xs:int" minOccurs="0"/>
+			<xs:element name="marketCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="turnawayCode" type="xs:string"/>
+			<xs:element name="insertUser" type="xs:string"/>
+			<xs:element name="insertDate" type="xs:dateTime"/>
+			<xs:element name="updateUser" type="xs:string"/>
+			<xs:element name="updateDate" type="xs:dateTime"/>
+			<xs:element name="rateCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="roomType" type="xs:string" minOccurs="0"/>
+			<xs:element name="comments" type="xs:string" minOccurs="0"/>
+			<xs:element name="country" type="xs:string" minOccurs="0"/>
+			<xs:element name="region" type="xs:string" minOccurs="0"/>
+			<xs:element name="zipCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="city" type="xs:string" minOccurs="0"/>
+			<xs:element name="district" type="xs:string" minOccurs="0"/>
+			<xs:element name="state" type="xs:string" minOccurs="0"/>
+			<xs:element name="departureDate" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="rateAmount" type="fixed144" minOccurs="0"/>
+			<xs:element name="adults" type="xs:int" minOccurs="0"/>
+			<xs:element name="children" type="xs:int" minOccurs="0"/>
+			<xs:element ref="profile:Profile" minOccurs="0"/>
+			<xs:element name="yieldMarketType" type="xs:string" minOccurs="0"/>
+			<xs:element name="customerValue" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="fixed144">
+		<xs:restriction base="xs:decimal">
+			<xs:totalDigits value="14"/>
+			<xs:fractionDigits value="4"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="HotelReference">
+		<xs:sequence>
+			<xs:element name="chainCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="hotelCode" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

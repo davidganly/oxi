@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="ovoscontract.fidelio.4.0" xmlns="ovoscontract.fidelio.4.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:profile="profile.fidelio.4.0" xmlns:udf="udf.fidelio.2.0" xmlns:udfdefinition="udfdefinition.fidelio.2.0" xmlns:relationship="relationship.fidelio.3.0" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="profile.fidelio.4.0" schemaLocation="profile.fidelio.4.0.xsd"/>
+	<xs:import namespace="udf.fidelio.2.0" schemaLocation="udf.fidelio.2.0.xsd"/>
+	<xs:import namespace="udfdefinition.fidelio.2.0" schemaLocation="udfdefinition.fidelio.2.0.xsd"/>
+	<xs:import namespace="relationship.fidelio.3.0" schemaLocation="relationship.fidelio.3.0.xsd"/>
+	<xs:element name="OvosContract" type = "OvosContract">
+		<xs:annotation>
+			<xs:documentation>OvosContract schema</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="OvosContract">
+		<xs:sequence>
+			<xs:element name="HotelReference" type="HotelReference"/>
+			<xs:element name="sourceContractNo" type="xs:string" minOccurs="0"/>
+			<xs:element name="destinationContractNo" type="xs:string" minOccurs="0"/>
+			<xs:element name="status" type="xs:string" minOccurs="0"/>
+			<xs:element name="templateCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="description" type="xs:string" minOccurs="0"/>
+			<xs:element name="beginDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="endDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="contractType" type="xs:string" minOccurs="0"/>
+			<xs:element name="unit" type="xs:string" minOccurs="0"/>
+			<xs:element name="contractPassword" type="xs:string" minOccurs="0"/>
+			<xs:element name="rentalProgram" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="optOutPenaltyFormula" type="xs:string" minOccurs="0"/>
+			<xs:element name="optOutPenalty" type="fixed144" minOccurs="0"/>
+			<xs:element name="salesAssociate" type="xs:string" minOccurs="0"/>
+			<xs:element name="contractPresentedDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="ssnTaxId" type="xs:string" minOccurs="0"/>
+			<xs:element name="estimatedClosingDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="purchasePrice" type="fixed144" minOccurs="0"/>
+			<xs:element name="realEstateAgent" type="xs:string" minOccurs="0"/>
+			<xs:element name="specialChangesToUnit" type="xs:string" minOccurs="0"/>
+			<xs:element name="ownerRoomType" type="xs:string" minOccurs="0"/>
+			<xs:element name="ignoreTemplateUpdate" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="primaryProfileRPH" type="xs:unsignedInt" minOccurs="0"/>
+			<xs:element name="OvosProfiles" type="OvosProfiles" minOccurs="0"/>
+			<xs:element name="OvosRestrictions" type="OvosRestrictions" minOccurs="0"/>
+			<xs:element name="RentalContracts" type="RentalContracts" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="actionType" type="xs:string" use="required"/>
+		<xs:attribute name="timeStamp" type="xs:dateTime" use="optional"/>
+	</xs:complexType>
+	<xs:simpleType name="fixed144">
+		<xs:restriction base="xs:decimal">
+			<xs:totalDigits value="14"/>
+			<xs:fractionDigits value="4"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="HotelReference">
+		<xs:sequence>
+			<xs:element name="chainCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="hotelCode" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="OvosProfiles">
+		<xs:sequence>
+			<xs:element name="OvosProfile" type="OvosProfile" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="OvosProfile">
+		<xs:sequence>
+			<xs:element ref="profile:Profile" minOccurs="0"/>
+			<xs:element name="ovosProfileRPH" type="xs:unsignedInt" minOccurs="0"/>
+			<xs:element name="profileType" type="xs:string" minOccurs="0"/>
+			<xs:element name="revenueShare" type="fixed144" minOccurs="0"/>
+			<xs:element name="commissionShare" type="fixed144" minOccurs="0"/>
+			<xs:element name="modifyUnit" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="relation" type="xs:string" minOccurs="0"/>
+			<xs:element name="primaryAddressRPH" type="xs:unsignedInt" minOccurs="0"/>
+			<xs:element name="primaryPhoneRPH" type="xs:unsignedInt" minOccurs="0"/>
+			<xs:element name="primaryFaxRPH" type="xs:unsignedInt" minOccurs="0"/>
+			<xs:element name="primaryEmailRPH" type="xs:unsignedInt" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="sysStatus" type="xs:string" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="OvosRestrictions">
+		<xs:sequence>
+			<xs:element name="OvosRestriction" type="OvosRestriction" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="OvosRestriction">
+		<xs:sequence>
+			<xs:element name="id" type="xs:unsignedInt" minOccurs="0"/>
+			<xs:element name="restrictionType" type="xs:string" minOccurs="0"/>
+			<xs:element name="beginDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="endDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="minRate" type="fixed144" minOccurs="0"/>
+			<xs:element name="maxNights" type="xs:int" minOccurs="0"/>
+			<xs:element name="usedNights" type="xs:int" minOccurs="0"/>
+			<xs:element name="parentId" type="xs:unsignedInt" minOccurs="0"/>
+			<xs:element name="day1" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="day2" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="day3" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="day4" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="day5" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="day6" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="day7" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="adjReason" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="sysStatus" type="xs:string" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="RentalContracts">
+		<xs:sequence>
+			<xs:element name="RentalContract" type="RentalContract" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RentalContract">
+		<xs:sequence>
+			<xs:element name="beginDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="endDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="ownerRevShare" type="fixed144" minOccurs="0"/>
+			<xs:element name="revShareFormula" type="xs:string" minOccurs="0"/>
+			<xs:element name="commByOwner" type="fixed144" minOccurs="0"/>
+			<xs:element name="autoRenewalDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="autoRenewalMonths" type="xs:int" minOccurs="0"/>
+			<xs:element name="resMaxNights" type="xs:int" minOccurs="0"/>
+			<xs:element name="longTerm" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="graceMonths" type="xs:int" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="sysStatus" type="xs:string" use="optional"/>
+	</xs:complexType>
+</xs:schema>

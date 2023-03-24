@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="managemember.fidelio.1.0" xmlns="managemember.fidelio.1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="ManageMember" type = "ManageMember">
+		<xs:annotation>
+			<xs:documentation>ManageMember schema</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="ManageMember">
+		<xs:sequence>
+			<xs:element name="HotelReference" type="HotelReference"/>
+			<xs:element name="memberCardRegCode" type="xs:string"/>
+			<xs:element name="ManageMemberRequest" type="ManageMemberRequest" minOccurs="0"/>
+			<xs:element name="ManageMemberResponses" type="ManageMemberResponses" minOccurs="0"/>
+			<xs:element name="EnrollmentRequest" type="EnrollmentRequest" minOccurs="0"/>
+			<xs:element name="EnrollmentResponse" type="EnrollmentResponse" minOccurs="0"/>
+			<xs:element name="TierOperationResponse" type="TierOperationResponse" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="HotelReference">
+		<xs:sequence>
+			<xs:element name="chainCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="hotelCode" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ManageMemberRequest">
+		<xs:sequence>
+			<xs:element name="memberCardRegAction" type="xs:string"/>
+			<xs:element name="memberCardRegCro" type="xs:string" minOccurs="0"/>
+			<xs:element name="memberCardRegResort" type="xs:string" minOccurs="0"/>
+			<xs:element name="memberCardRegNo" type="xs:string" minOccurs="0"/>
+			<xs:element name="sourceType" type="xs:string"/>
+			<xs:element name="appUser" type="xs:string"/>
+			<xs:element name="appUserRegCode" type="xs:string"/>
+			<xs:element name="appUserUniq" type="xs:string"/>
+			<xs:element name="appUserFirst" type="xs:string" minOccurs="0"/>
+			<xs:element name="appUserLast" type="xs:string" minOccurs="0"/>
+			<xs:element name="appUserEmail" type="xs:string" minOccurs="0"/>
+			<xs:element name="envelopeGreeting" type="xs:string" minOccurs="0"/>
+			<xs:element name="firstName" type="xs:string" minOccurs="0"/>
+			<xs:element name="gender" type="xs:string" minOccurs="0"/>
+			<xs:element name="language" type="xs:string" minOccurs="0"/>
+			<xs:element name="lastName" type="xs:string"/>
+			<xs:element name="middleName" type="xs:string" minOccurs="0"/>
+			<xs:element name="nameCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="suffix" type="xs:string" minOccurs="0"/>
+			<xs:element name="title" type="xs:string" minOccurs="0"/>
+			<xs:element name="titleSuffix" type="fixed144" minOccurs="0"/>
+			<xs:element name="xenvelopeGreeting" type="xs:string" minOccurs="0"/>
+			<xs:element name="xfirstName" type="xs:string" minOccurs="0"/>
+			<xs:element name="xlanguage" type="xs:string" minOccurs="0"/>
+			<xs:element name="xlastName" type="xs:string" minOccurs="0"/>
+			<xs:element name="xmiddleName" type="xs:string" minOccurs="0"/>
+			<xs:element name="xsalutation" type="xs:string" minOccurs="0"/>
+			<xs:element name="xtitle" type="xs:string" minOccurs="0"/>
+			<xs:element name="membershipType" type="xs:string" minOccurs="0"/>
+			<xs:element name="membershipCardNo" type="xs:string" minOccurs="0"/>
+			<xs:element name="origMembershipLevel" type="xs:string" minOccurs="0"/>
+			<xs:element name="finalMembershipLevel" type="xs:string" minOccurs="0"/>
+			<xs:element name="nameOnCard" type="xs:string" minOccurs="0"/>
+			<xs:element name="origExpirationDate" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="finalExpirationDate" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="enrollmentCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="paymentDate" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="feeCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="feeAmount" type="fixed144" minOccurs="0"/>
+			<xs:element name="paymentComments" type="xs:string" minOccurs="0"/>
+			<xs:element name="creditCardType" type="xs:string" minOccurs="0"/>
+			<xs:element name="inactiveDate" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="paymentMethod" type="xs:string" minOccurs="0"/>
+			<xs:element name="joinedDate" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="profileID" type="xs:string" minOccurs="0"/>
+			<xs:element name="mfResortProfileID" type="xs:string" minOccurs="0"/>
+			<xs:element name="MemberAddresses" type="MemberAddresses" minOccurs="0"/>
+			<xs:element name="MemberPhones" type="MemberPhones" minOccurs="0"/>
+			<xs:element name="dateOfBirthEncrypted" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="fixed144">
+		<xs:restriction base="xs:decimal">
+			<xs:totalDigits value="14"/>
+			<xs:fractionDigits value="4"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="MemberAddresses">
+		<xs:sequence>
+			<xs:element name="MemberAddress" type="MemberAddress" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MemberAddress">
+		<xs:sequence>
+			<xs:element name="addressType" type="xs:string" minOccurs="0"/>
+			<xs:element name="address1" type="xs:string" minOccurs="0"/>
+			<xs:element name="address2" type="xs:string" minOccurs="0"/>
+			<xs:element name="address3" type="xs:string" minOccurs="0"/>
+			<xs:element name="address4" type="xs:string" minOccurs="0"/>
+			<xs:element name="city" type="xs:string" minOccurs="0"/>
+			<xs:element name="countryCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="province" type="xs:string" minOccurs="0"/>
+			<xs:element name="state" type="xs:string" minOccurs="0"/>
+			<xs:element name="zipCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="primary" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="languageCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="postalCodeExt" type="xs:string" minOccurs="0"/>
+			<xs:element name="barCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="inactiveDate" type="xs:dateTime" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MemberPhones">
+		<xs:sequence>
+			<xs:element name="MemberPhone" type="MemberPhone" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MemberPhone">
+		<xs:sequence>
+			<xs:element name="phoneType" type="xs:string"/>
+			<xs:element name="phoneNumber" type="xs:string"/>
+			<xs:element name="primary" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="inactiveDate" type="xs:dateTime" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ManageMemberResponses">
+		<xs:sequence>
+			<xs:element name="ManageMemberResponse" type="ManageMemberResponse" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ManageMemberResponse">
+		<xs:sequence>
+			<xs:element name="memberSystemNameId" type="xs:string"/>
+			<xs:element name="memberSystemDatabaseId" type="xs:string" minOccurs="0"/>
+			<xs:element name="matchDesc" type="xs:string" minOccurs="0"/>
+			<xs:element name="matchWeight" type="fixed144" minOccurs="0"/>
+			<xs:element name="nameCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="lastName" type="xs:string"/>
+			<xs:element name="firstName" type="xs:string" minOccurs="0"/>
+			<xs:element name="xlastName" type="xs:string" minOccurs="0"/>
+			<xs:element name="xfirstName" type="xs:string" minOccurs="0"/>
+			<xs:element name="address1" type="xs:string" minOccurs="0"/>
+			<xs:element name="address2" type="xs:string" minOccurs="0"/>
+			<xs:element name="city" type="xs:string" minOccurs="0"/>
+			<xs:element name="state" type="xs:string" minOccurs="0"/>
+			<xs:element name="zipCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="countryCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="email" type="xs:string" minOccurs="0"/>
+			<xs:element name="primaryPhone" type="xs:string" minOccurs="0"/>
+			<xs:element name="membershipType" type="xs:string" minOccurs="0"/>
+			<xs:element name="membershipCardNo" type="xs:string" minOccurs="0"/>
+			<xs:element name="frequentFlyerType" type="xs:string" minOccurs="0"/>
+			<xs:element name="frequentFlyerNumber" type="xs:string" minOccurs="0"/>
+			<xs:element name="gender" type="xs:string" minOccurs="0"/>
+			<xs:element name="profileID" type="xs:string" minOccurs="0"/>
+			<xs:element name="mfResortProfileID" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="EnrollmentRequest">
+		<xs:sequence>
+			<xs:element name="memberCardRegAction" type="xs:string"/>
+			<xs:element name="memberSystemNameId" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="EnrollmentResponse">
+		<xs:sequence>
+			<xs:element name="memberSystemNameId" type="xs:string"/>
+			<xs:element name="memberSystemDatabaseId" type="xs:string" minOccurs="0"/>
+			<xs:element name="membershipType" type="xs:string"/>
+			<xs:element name="membershipCardNo" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TierOperationResponse">
+		<xs:sequence>
+			<xs:element name="memberSystemNameId" type="xs:string"/>
+			<xs:element name="memberSystemDatabaseId" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

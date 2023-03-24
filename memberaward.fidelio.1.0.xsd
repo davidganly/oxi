@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="memberaward.fidelio.1.0" xmlns="memberaward.fidelio.1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="MemberAwardHeader" type = "MemberAwardHeader">
+		<xs:annotation>
+			<xs:documentation>MemberAwardHeader schema</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="MemberAwardHeader">
+		<xs:sequence>
+			<xs:element name="HotelReference" type="HotelReference"/>
+			<xs:element name="profileID" type="xs:string" minOccurs="0"/>
+			<xs:element name="mfResortProfileID" type="xs:string" minOccurs="0"/>
+			<xs:element name="reservationID" type="xs:string" minOccurs="0"/>
+			<xs:element name="confirmationID" type="xs:string" minOccurs="0"/>
+			<xs:element name="mfConfirmationLegNo" type="xs:int" minOccurs="0"/>
+			<xs:element name="membershipType" type="xs:string" minOccurs="0"/>
+			<xs:element name="membershipCardNo" type="xs:string" minOccurs="0"/>
+			<xs:element name="membershipLevel" type="xs:string" minOccurs="0"/>
+			<xs:element name="resortBookNo" type="xs:string"/>
+			<xs:element name="crsBookNo" type="xs:string" minOccurs="0"/>
+			<xs:element name="resvCancelNumber" type="xs:string" minOccurs="0"/>
+			<xs:element name="adults" type="xs:int" minOccurs="0"/>
+			<xs:element name="arrivalDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="departureDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="processingFlag" type="xs:string" minOccurs="0"/>
+			<xs:element name="memPointsBefore" type="xs:int" minOccurs="0"/>
+			<xs:element name="awardPoints" type="xs:int" minOccurs="0"/>
+			<xs:element name="awardCxlPointsRet" type="xs:int" minOccurs="0"/>
+			<xs:element name="awardActualCxlPoints" type="xs:int" minOccurs="0"/>
+			<xs:element name="awardExpPoints" type="xs:int" minOccurs="0"/>
+			<xs:element name="memPointsAfter" type="xs:int" minOccurs="0"/>
+			<xs:element name="processingFlg" type="xs:string" minOccurs="0"/>
+			<xs:element name="MemberAwardDetails" type="MemberAwardDetails" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="HotelReference">
+		<xs:sequence>
+			<xs:element name="chainCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="hotelCode" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MemberAwardDetails">
+		<xs:sequence>
+			<xs:element name="MemberAwardDetail" type="MemberAwardDetail" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MemberAwardDetail">
+		<xs:sequence>
+			<xs:element name="awardType" type="xs:string" minOccurs="0"/>
+			<xs:element name="actionType" type="xs:string" minOccurs="0"/>
+			<xs:element name="awardBasedOn" type="xs:string" minOccurs="0"/>
+			<xs:element name="pointsRequired" type="xs:int" minOccurs="0"/>
+			<xs:element name="awardCancellationNo" type="xs:string" minOccurs="0"/>
+			<xs:element name="cancelPenaltyDays" type="xs:int" minOccurs="0"/>
+			<xs:element name="cancelPenaltyCharge" type="fixed144" minOccurs="0"/>
+			<xs:element name="cancelPenaltyType" type="xs:string" minOccurs="0"/>
+			<xs:element name="cancelPenaltyPoints" type="xs:int" minOccurs="0"/>
+			<xs:element name="cancelPolicyType" type="xs:string" minOccurs="0"/>
+			<xs:element name="numberOfNights" type="xs:int" minOccurs="0"/>
+			<xs:element name="ptsSchCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="originalPointsRequired" type="xs:int" minOccurs="0"/>
+			<xs:element name="stayDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="rateCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="roomType" type="xs:string" minOccurs="0"/>
+			<xs:element name="fromRoomType" type="xs:string" minOccurs="0"/>
+			<xs:element name="toRoomType" type="xs:string" minOccurs="0"/>
+			<xs:element name="product" type="xs:string" minOccurs="0"/>
+			<xs:element name="awardValue" type="fixed144" minOccurs="0"/>
+			<xs:element name="trxNo" type="xs:int" minOccurs="0"/>
+			<xs:element name="awardVoucherNo" type="xs:string" minOccurs="0"/>
+			<xs:element name="totalLocalAmount" type="fixed144" minOccurs="0"/>
+			<xs:element name="redeemedLocalAmount" type="fixed144" minOccurs="0"/>
+			<xs:element name="totalCentralAmount" type="fixed144" minOccurs="0"/>
+			<xs:element name="redeemedCentralAmount" type="fixed144" minOccurs="0"/>
+			<xs:element name="exchangeRateType" type="xs:string" minOccurs="0"/>
+			<xs:element name="comments" type="xs:string" minOccurs="0"/>
+			<xs:element name="errorCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="errorDesc" type="xs:string" minOccurs="0"/>
+			<xs:element name="inactive" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="actualCancelPoints" type="xs:int" minOccurs="0"/>
+			<xs:element name="transactionCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="ftId" type="xs:string" minOccurs="0"/>
+			<xs:element name="MemberAwardExportDetail" type="MemberAwardExportDetail" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="fixed144">
+		<xs:restriction base="xs:decimal">
+			<xs:totalDigits value="14"/>
+			<xs:fractionDigits value="4"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="MemberAwardExportDetail">
+		<xs:sequence>
+			<xs:element name="firstName" type="xs:string" minOccurs="0"/>
+			<xs:element name="lastName" type="xs:string" minOccurs="0"/>
+			<xs:element name="middleName" type="xs:string" minOccurs="0"/>
+			<xs:element name="companyName" type="xs:string" minOccurs="0"/>
+			<xs:element name="phoneNo" type="xs:string" minOccurs="0"/>
+			<xs:element name="address1" type="xs:string" minOccurs="0"/>
+			<xs:element name="address2" type="xs:string" minOccurs="0"/>
+			<xs:element name="address3" type="xs:string" minOccurs="0"/>
+			<xs:element name="address4" type="xs:string" minOccurs="0"/>
+			<xs:element name="city" type="xs:string" minOccurs="0"/>
+			<xs:element name="country" type="xs:string" minOccurs="0"/>
+			<xs:element name="province" type="xs:string" minOccurs="0"/>
+			<xs:element name="state" type="xs:string" minOccurs="0"/>
+			<xs:element name="zip" type="xs:string" minOccurs="0"/>
+			<xs:element name="cityExt" type="xs:string" minOccurs="0"/>
+			<xs:element name="udfd01" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="udfd02" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="udfd03" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="udfd04" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="udfd05" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="udfn01" type="fixed144" minOccurs="0"/>
+			<xs:element name="udfn02" type="fixed144" minOccurs="0"/>
+			<xs:element name="udfn03" type="fixed144" minOccurs="0"/>
+			<xs:element name="udfn04" type="fixed144" minOccurs="0"/>
+			<xs:element name="udfn05" type="fixed144" minOccurs="0"/>
+			<xs:element name="udfc01" type="xs:string" minOccurs="0"/>
+			<xs:element name="udfc02" type="xs:string" minOccurs="0"/>
+			<xs:element name="udfc03" type="xs:string" minOccurs="0"/>
+			<xs:element name="udfc04" type="xs:string" minOccurs="0"/>
+			<xs:element name="udfc05" type="xs:string" minOccurs="0"/>
+			<xs:element name="udfc06" type="xs:string" minOccurs="0"/>
+			<xs:element name="udfc07" type="xs:string" minOccurs="0"/>
+			<xs:element name="udfc08" type="xs:string" minOccurs="0"/>
+			<xs:element name="udfc09" type="xs:string" minOccurs="0"/>
+			<xs:element name="udfc10" type="xs:string" minOccurs="0"/>
+			<xs:element name="udfc11" type="xs:string" minOccurs="0"/>
+			<xs:element name="udfc12" type="xs:string" minOccurs="0"/>
+			<xs:element name="udfc13" type="xs:string" minOccurs="0"/>
+			<xs:element name="udfc14" type="xs:string" minOccurs="0"/>
+			<xs:element name="udfc15" type="xs:string" minOccurs="0"/>
+			<xs:element name="udfc16" type="xs:string" minOccurs="0"/>
+			<xs:element name="udfc17" type="xs:string" minOccurs="0"/>
+			<xs:element name="udfc18" type="xs:string" minOccurs="0"/>
+			<xs:element name="udfc19" type="xs:string" minOccurs="0"/>
+			<xs:element name="udfc20" type="xs:string" minOccurs="0"/>
+			<xs:element name="displaySet" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

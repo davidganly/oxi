@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="voucherbenefit.fidelio.1.0" xmlns="voucherbenefit.fidelio.1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="VoucherBenefit" type = "VoucherBenefit">
+		<xs:annotation>
+			<xs:documentation>VoucherBenefit schema</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="VoucherBenefit">
+		<xs:sequence>
+			<xs:element name="voucherBenefitCode" type="xs:string"/>
+			<xs:element name="voucherType" type="xs:string"/>
+			<xs:element name="beginDate" type="xs:date"/>
+			<xs:element name="endDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="resort" type="xs:string" minOccurs="0"/>
+			<xs:element name="refTypeCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="inactiveDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="VoucherBenefitDetails" type="VoucherBenefitDetails" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="VoucherBenefitDetails">
+		<xs:sequence>
+			<xs:element name="VoucherBenefitDetail" type="VoucherBenefitDetail" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="VoucherBenefitDetail">
+		<xs:sequence>
+			<xs:element name="voucherBenefitDtlCode" type="xs:string"/>
+			<xs:element name="benefitBasedOn" type="xs:string"/>
+			<xs:element name="noOfUnits" type="xs:int" minOccurs="0"/>
+			<xs:element name="rateCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="inactiveDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="applySeq" type="xs:int" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

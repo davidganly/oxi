@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="nadailystatitics.fidelio.1.0" xmlns="nadailystatitics.fidelio.1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="NADailyStatitics" type = "NADailyStatitics">
+		<xs:annotation>
+			<xs:documentation>NADailyStatitics schema</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="NADailyStatitics">
+		<xs:sequence>
+			<xs:element name="HotelReference" type="HotelReference"/>
+			<xs:element name="statisticDate" type="xs:date"/>
+			<xs:element name="HotelStatistics" type="HotelStatistics" minOccurs="0"/>
+			<xs:element name="MarketStatistics" type="MarketStatistics" minOccurs="0"/>
+			<xs:element name="RevenueSums" type="RevenueSums" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="messageType" type="messageType" use="required"/>
+	</xs:complexType>
+	<xs:simpleType name="messageType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="HOTEL_STATISTICS"/>
+			<xs:enumeration value="MARKET_STATISTICS"/>
+			<xs:enumeration value="REVENUE_SUM"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="HotelReference">
+		<xs:sequence>
+			<xs:element name="chainCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="hotelCode" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="HotelStatistics">
+		<xs:sequence>
+			<xs:element name="HotelStatistic" type="HotelStatistic" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="HotelStatistic">
+		<xs:sequence>
+			<xs:element name="adults" type="xs:int" minOccurs="0"/>
+			<xs:element name="arrivalRooms" type="xs:int" minOccurs="0"/>
+			<xs:element name="arrivalRoomsTomorrow" type="xs:int" minOccurs="0"/>
+			<xs:element name="cancelRoomsArrivalToday" type="xs:int" minOccurs="0"/>
+			<xs:element name="children" type="xs:int" minOccurs="0"/>
+			<xs:element name="companyRooms" type="xs:int" minOccurs="0"/>
+			<xs:element name="complimentaryRooms" type="xs:int" minOccurs="0"/>
+			<xs:element name="dayUseRooms" type="xs:int" minOccurs="0"/>
+			<xs:element name="departureRooms" type="xs:int" minOccurs="0"/>
+			<xs:element name="departureRoomsTomorrow" type="xs:int" minOccurs="0"/>
+			<xs:element name="extraRevenue" type="fixed144" minOccurs="0"/>
+			<xs:element name="foodBevRevenue" type="fixed144" minOccurs="0"/>
+			<xs:element name="groupRevenue" type="fixed144" minOccurs="0"/>
+			<xs:element name="groupRooms" type="xs:int" minOccurs="0"/>
+			<xs:element name="houseUseRooms" type="xs:int" minOccurs="0"/>
+			<xs:element name="noShowRooms" type="xs:int" minOccurs="0"/>
+			<xs:element name="outOfOrderRooms" type="xs:int" minOccurs="0"/>
+			<xs:element name="physicalRooms" type="xs:int" minOccurs="0"/>
+			<xs:element name="roomClass" type="xs:string" minOccurs="0"/>
+			<xs:element name="roomRevenue" type="fixed144" minOccurs="0"/>
+			<xs:element name="totalRevenue" type="fixed144" minOccurs="0"/>
+			<xs:element name="turnaways" type="xs:int" minOccurs="0"/>
+			<xs:element name="walkinRooms" type="xs:int" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="fixed144">
+		<xs:restriction base="xs:decimal">
+			<xs:totalDigits value="14"/>
+			<xs:fractionDigits value="4"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="MarketStatistics">
+		<xs:sequence>
+			<xs:element name="MarketStatistic" type="MarketStatistic" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MarketStatistic">
+		<xs:sequence>
+			<xs:element name="cancelRoomsArrivalToday" type="xs:int" minOccurs="0"/>
+			<xs:element name="dayUseRooms" type="xs:int" minOccurs="0"/>
+			<xs:element name="extraRevenue" type="fixed144" minOccurs="0"/>
+			<xs:element name="foodBevRevenue" type="fixed144" minOccurs="0"/>
+			<xs:element name="marketCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="noOfGuests" type="xs:int" minOccurs="0"/>
+			<xs:element name="noShowRooms" type="xs:int" minOccurs="0"/>
+			<xs:element name="occupiedRooms" type="xs:int" minOccurs="0"/>
+			<xs:element name="roomRevenue" type="fixed144" minOccurs="0"/>
+			<xs:element name="roomType" type="xs:string" minOccurs="0"/>
+			<xs:element name="totalRevenue" type="fixed144" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RevenueSums">
+		<xs:sequence>
+			<xs:element name="RevenueSum" type="RevenueSum" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RevenueSum">
+		<xs:sequence>
+			<xs:element name="arrivalDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="departureDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="extraRevenue" type="fixed144" minOccurs="0"/>
+			<xs:element name="foodBevRevenue" type="fixed144" minOccurs="0"/>
+			<xs:element name="reservationNameId" type="xs:string" minOccurs="0"/>
+			<xs:element name="roomRevenue" type="fixed144" minOccurs="0"/>
+			<xs:element name="totalRevenue" type="fixed144" minOccurs="0"/>
+			<xs:element name="reservationID" type="xs:string" minOccurs="0"/>
+			<xs:element name="confirmationID" type="xs:string" minOccurs="0"/>
+			<xs:element name="mfConfirmationLegNo" type="xs:int" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

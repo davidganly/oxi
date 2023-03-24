@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="schemaversion.fidelio.2.0" xmlns="schemaversion.fidelio.2.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="SchemaVersion" type = "SchemaVersion">
+		<xs:annotation>
+			<xs:documentation>SchemaVersion schema</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="SchemaVersion">
+		<xs:sequence>
+			<xs:element name="interfaceId" type="xs:string"/>
+			<xs:element name="hotelCode" type="xs:string"/>
+			<xs:element name="xmlSchemas" type="xmlSchemas" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="xmlSchemas">
+		<xs:sequence>
+			<xs:element name="xmlSchema" type="xmlSchema" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="xmlSchema">
+		<xs:sequence>
+			<xs:element name="xmlType" type="xs:string"/>
+			<xs:element name="schemaClass" type="xs:string"/>
+			<xs:element name="version" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

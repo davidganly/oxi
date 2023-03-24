@@ -1,0 +1,754 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="configuration.opera.3.0" xmlns="configuration.opera.3.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="Configuration" type = "Configuration">
+		<xs:annotation>
+			<xs:documentation>Configuration schema</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="Configuration">
+		<xs:sequence>
+			<xs:element name="HotelReference" type="HotelReference"/>
+			<xs:element name="ConfigItems" type="ConfigItems"/>
+		</xs:sequence>
+		<xs:attribute name="configType" type="xs:string" use="required"/>
+		<xs:attribute name="actionType" type="actionType" use="required"/>
+		<xs:attribute name="requestId" type="xs:string" use="optional"/>
+	</xs:complexType>
+	<xs:simpleType name="actionType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="NEW"/>
+			<xs:enumeration value="CHANGE"/>
+			<xs:enumeration value="DELETE"/>
+			<xs:enumeration value="SYNC_ALL"/>
+			<xs:enumeration value="SYNC_GROUP"/>
+			<xs:enumeration value="SYNC_ONE"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="HotelReference">
+		<xs:sequence>
+			<xs:element name="chainCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="hotelCode" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ConfigItems">
+		<xs:sequence>
+			<xs:element name="ConfigItem" type="ConfigItem" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ConfigItem">
+		<xs:sequence>
+			<xs:element name="description" type="xs:string" minOccurs="0"/>
+			<xs:element name="shortDescription" type="xs:string" minOccurs="0"/>
+			<xs:element name="ReservationType" type="ReservationType" minOccurs="0"/>
+			<xs:element name="DepositRule" type="DepositRule" minOccurs="0"/>
+			<xs:element name="CancellationRule" type="CancellationRule" minOccurs="0"/>
+			<xs:element name="RuleSchedule" type="RuleSchedule" minOccurs="0"/>
+			<xs:element name="AllotmentStatusCode" type="AllotmentStatusCode" minOccurs="0"/>
+			<xs:element name="PreferenceGroup" type="PreferenceGroup" minOccurs="0"/>
+			<xs:element name="Preference" type="Preference" minOccurs="0"/>
+			<xs:element name="MembershipClass" type="MembershipClass" minOccurs="0"/>
+			<xs:element name="MembershipGroup" type="MembershipGroup" minOccurs="0"/>
+			<xs:element name="MarketCode" type="MarketCode" minOccurs="0"/>
+			<xs:element name="Country" type="Country" minOccurs="0"/>
+			<xs:element name="CityPostalCode" type="CityPostalCode" minOccurs="0"/>
+			<xs:element name="RateSeason" type="RateSeason" minOccurs="0"/>
+			<xs:element name="ForeignCurrencyCode" type="ForeignCurrencyCode" minOccurs="0"/>
+			<xs:element name="ForeignExchangeCode" type="ForeignExchangeCode" minOccurs="0"/>
+			<xs:element name="RevenueBucket" type="RevenueBucket" minOccurs="0"/>
+			<xs:element name="CommissionCode" type="CommissionCode" minOccurs="0"/>
+			<xs:element name="RoomType" type="RoomType" minOccurs="0"/>
+			<xs:element name="ItemInventoryClass" type="ItemInventoryClass" minOccurs="0"/>
+			<xs:element name="ItemInventory" type="ItemInventory" minOccurs="0"/>
+			<xs:element name="ForeignExchangeRate" type="ForeignExchangeRate" minOccurs="0"/>
+			<xs:element name="BestAvailableRate" type="BestAvailableRate" minOccurs="0"/>
+			<xs:element name="RelationCfg" type="RelationCfg" minOccurs="0"/>
+			<xs:element name="MembershipAward" type="MembershipAward" minOccurs="0"/>
+			<xs:element name="MembershipPointSchedules" type="MembershipPointSchedules" minOccurs="0"/>
+			<xs:element name="PromotionCode" type="PromotionCode" minOccurs="0"/>
+			<xs:element name="TransactionCodeConfig" type="TransactionCodeConfig" minOccurs="0"/>
+			<xs:element name="FunctionSpace" type="FunctionSpace" minOccurs="0"/>
+			<xs:element name="MembershipFeeCodes" type="MembershipFeeCodes" minOccurs="0"/>
+			<xs:element name="MemberManagementDisplays" type="MemberManagementDisplays" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="itemCode" type="xs:string" use="required"/>
+		<xs:attribute name="itemOldCode" type="xs:string" use="optional"/>
+		<xs:attribute name="itemGroup" type="xs:string" use="optional"/>
+		<xs:attribute name="groupType" type="xs:string" use="optional"/>
+		<xs:attribute name="displaySequence" type="xs:int" use="optional"/>
+		<xs:attribute name="beginDate" type="xs:date" use="optional"/>
+		<xs:attribute name="endDate" type="xs:date" use="optional"/>
+		<xs:attribute name="inactive" type="xs:boolean" use="optional"/>
+		<xs:attribute name="timeStamp" type="xs:dateTime" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="ReservationType">
+		<xs:sequence>
+			<xs:element name="ccPendingDays" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="arrivalTimeRequired" type="xs:boolean" use="optional"/>
+		<xs:attribute name="deductible" type="xs:boolean" use="optional"/>
+		<xs:attribute name="ccRequired" type="xs:boolean" use="optional"/>
+		<xs:attribute name="depositRequired" type="xs:boolean" use="optional"/>
+		<xs:attribute name="addressRequired" type="xs:boolean" use="optional"/>
+		<xs:attribute name="phoneRequired" type="xs:boolean" use="optional"/>
+		<xs:attribute name="ccVerifyCodeRequired" type="xs:boolean" use="optional"/>
+		<xs:attribute name="autoCancelRes" type="xs:boolean" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="DepositRule">
+		<xs:sequence>
+		</xs:sequence>
+		<xs:attribute name="depositRuleType" type="depositRuleType" use="optional"/>
+		<xs:attribute name="amount" type="fixed144" use="optional"/>
+		<xs:attribute name="daysBeforeArrival" type="xs:int" use="optional"/>
+		<xs:attribute name="daysAfterBooking" type="xs:int" use="optional"/>
+	</xs:complexType>
+	<xs:simpleType name="fixed144">
+		<xs:restriction base="xs:decimal">
+			<xs:totalDigits value="14"/>
+			<xs:fractionDigits value="4"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="depositRuleType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="F"/>
+			<xs:enumeration value="N"/>
+			<xs:enumeration value="P"/>
+			<xs:enumeration value="T"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="CancellationRule">
+		<xs:sequence>
+		</xs:sequence>
+		<xs:attribute name="cancelRuleType" type="cancelRuleType" use="optional"/>
+		<xs:attribute name="amount" type="fixed144" use="optional"/>
+		<xs:attribute name="cancelBefore" type="xs:dateTime" use="optional"/>
+		<xs:attribute name="daysBeforeArrival" type="xs:int" use="optional"/>
+	</xs:complexType>
+	<xs:simpleType name="cancelRuleType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="F"/>
+			<xs:enumeration value="N"/>
+			<xs:enumeration value="O"/>
+			<xs:enumeration value="P"/>
+			<xs:enumeration value="T"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="RuleSchedule">
+		<xs:sequence>
+			<xs:element name="inventoryBlockCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="mfAllotmentId" type="xs:string" minOccurs="0"/>
+			<xs:element name="mfResortAllotmentId" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="scheduleRuleType" type="scheduleRuleType" use="optional"/>
+		<xs:attribute name="rateCode" type="xs:string" use="optional"/>
+		<xs:attribute name="reservationType" type="xs:string" use="optional"/>
+		<xs:attribute name="override" type="xs:boolean" use="optional"/>
+		<xs:attribute name="creditRating" type="xs:string" use="optional"/>
+		<xs:attribute name="paymentRequired" type="xs:string" use="optional"/>
+	</xs:complexType>
+	<xs:simpleType name="scheduleRuleType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="DEPOSIT"/>
+			<xs:enumeration value="CANCEL"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="AllotmentStatusCode">
+		<xs:sequence>
+			<xs:element name="NextStatuses" type="NextStatuses" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="roomStatusType" type="xs:string" use="optional"/>
+		<xs:attribute name="reservationType" type="xs:string" use="optional"/>
+		<xs:attribute name="reasonType" type="xs:string" use="optional"/>
+		<xs:attribute name="allowPickup" type="xs:boolean" use="optional"/>
+		<xs:attribute name="returnInventory" type="xs:boolean" use="optional"/>
+		<xs:attribute name="startingStatus" type="xs:boolean" use="optional"/>
+		<xs:attribute name="leadStatus" type="xs:boolean" use="optional"/>
+		<xs:attribute name="logCateringChanges" type="xs:boolean" use="optional"/>
+		<xs:attribute name="displayColor" type="xs:string" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="NextStatuses">
+		<xs:sequence>
+			<xs:element name="NextStatus" type="NextStatus" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NextStatus">
+		<xs:sequence>
+		</xs:sequence>
+		<xs:attribute name="statusCode" type="xs:string" use="optional"/>
+		<xs:attribute name="displaySequence" type="xs:int" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="PreferenceGroup">
+		<xs:sequence>
+		</xs:sequence>
+		<xs:attribute name="maximumQuantity" type="xs:int" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="Preference">
+		<xs:sequence>
+		</xs:sequence>
+		<xs:attribute name="global" type="xs:boolean" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="MembershipClass">
+		<xs:sequence>
+		</xs:sequence>
+		<xs:attribute name="classType" type="classType" use="optional"/>
+	</xs:complexType>
+	<xs:simpleType name="classType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="LOYALTY"/>
+			<xs:enumeration value="FREQUENT_FLYER"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="MembershipGroup">
+		<xs:sequence>
+			<xs:element name="GroupItems" type="GroupItems" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="GroupItems">
+		<xs:sequence>
+			<xs:element name="GroupItem" type="GroupItem" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="GroupItem">
+		<xs:sequence>
+		</xs:sequence>
+		<xs:attribute name="groupItemCode" type="xs:string" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="MarketCode">
+		<xs:sequence>
+		</xs:sequence>
+		<xs:attribute name="displayColor" type="xs:string" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="Country">
+		<xs:sequence>
+		</xs:sequence>
+		<xs:attribute name="statisticCode" type="xs:string" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="CityPostalCode">
+		<xs:sequence>
+		</xs:sequence>
+		<xs:attribute name="countryCode" type="xs:string" use="optional"/>
+		<xs:attribute name="stateCode" type="xs:string" use="optional"/>
+		<xs:attribute name="districtCode" type="xs:string" use="optional"/>
+		<xs:attribute name="city" type="xs:string" use="optional"/>
+		<xs:attribute name="postalCodeBegin" type="xs:string" use="optional"/>
+		<xs:attribute name="postalCodeEnd" type="xs:string" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="RateSeason">
+		<xs:sequence>
+		</xs:sequence>
+		<xs:attribute name="rateCode" type="xs:string" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="ForeignCurrencyCode">
+		<xs:sequence>
+		</xs:sequence>
+		<xs:attribute name="Decimals" type="xs:int" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="ForeignExchangeCode">
+		<xs:sequence>
+		</xs:sequence>
+		<xs:attribute name="exchangeCash" type="xs:boolean" use="optional"/>
+		<xs:attribute name="exchangeCheck" type="xs:boolean" use="optional"/>
+		<xs:attribute name="settlement" type="xs:boolean" use="optional"/>
+		<xs:attribute name="posting" type="xs:boolean" use="optional"/>
+		<xs:attribute name="commission" type="xs:boolean" use="optional"/>
+		<xs:attribute name="membership" type="xs:boolean" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="RevenueBucket">
+		<xs:sequence>
+			<xs:element name="TransactionCodes" type="TransactionCodes" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TransactionCodes">
+		<xs:sequence>
+			<xs:element name="TransactionCode" type="TransactionCode" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TransactionCode">
+		<xs:sequence>
+		</xs:sequence>
+		<xs:attribute name="transactionCode" type="xs:string" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="CommissionCode">
+		<xs:sequence>
+			<xs:element name="ReservationCommission" type="ReservationCommission" minOccurs="0"/>
+			<xs:element name="RevenueCommission" type="RevenueCommission" minOccurs="0"/>
+			<xs:element name="HoldStatus" type="HoldStatus"/>
+			<xs:element name="HistoryRecord" type="HistoryRecord"/>
+		</xs:sequence>
+		<xs:attribute name="basedOn" type="basedOn" use="optional"/>
+		<xs:attribute name="taxPercent" type="fixed144" use="optional"/>
+	</xs:complexType>
+	<xs:simpleType name="basedOn">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="RESERVATION"/>
+			<xs:enumeration value="REVENUE"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="ReservationCommission">
+		<xs:sequence>
+		</xs:sequence>
+		<xs:attribute name="payFrequency" type="payFrequency" use="optional"/>
+		<xs:attribute name="amount" type="fixed144" use="optional"/>
+	</xs:complexType>
+	<xs:simpleType name="payFrequency">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="NIGHT"/>
+			<xs:enumeration value="STAY"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="RevenueCommission">
+		<xs:sequence>
+			<xs:element name="CommissionTxnCodes" type="CommissionTxnCodes" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CommissionTxnCodes">
+		<xs:sequence>
+			<xs:element name="CommissionTxnCode" type="CommissionTxnCode" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CommissionTxnCode">
+		<xs:sequence>
+		</xs:sequence>
+		<xs:attribute name="transactionCode" type="xs:string" use="optional"/>
+		<xs:attribute name="percentage" type="fixed144" use="optional"/>
+		<xs:attribute name="weekendPercentage" type="fixed144" use="optional"/>
+		<xs:attribute name="basedOnNetAmount" type="xs:boolean" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="HoldStatus">
+		<xs:sequence>
+		</xs:sequence>
+		<xs:attribute name="always" type="xs:boolean" use="required"/>
+		<xs:attribute name="ar" type="xs:boolean" use="required"/>
+		<xs:attribute name="prepaid" type="xs:boolean" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="HistoryRecord">
+		<xs:sequence>
+		</xs:sequence>
+		<xs:attribute name="payFrequency" type="payFrequency" use="optional"/>
+		<xs:attribute name="amount" type="fixed144" use="optional"/>
+		<xs:attribute name="amountType" type="amountType" use="optional"/>
+	</xs:complexType>
+	<xs:simpleType name="amountType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="FLAT"/>
+			<xs:enumeration value="PERCENTAGE"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="RoomType">
+		<xs:sequence>
+			<xs:element name="ComponentRoomTypes" type="ComponentRoomTypes" minOccurs="0"/>
+			<xs:element name="RoomTypeFeatures" type="RoomTypeFeatures" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="defaultOccupancy" type="xs:int" use="optional"/>
+		<xs:attribute name="maximumOccupancy" type="xs:int" use="optional"/>
+		<xs:attribute name="maximumRollAways" type="xs:int" use="optional"/>
+		<xs:attribute name="publishedRateCode" type="xs:string" use="optional"/>
+		<xs:attribute name="publishedRateAmount" type="fixed144" use="optional"/>
+		<xs:attribute name="pseudoRoomType" type="xs:boolean" use="optional"/>
+		<xs:attribute name="enableHousekeeping" type="xs:boolean" use="optional"/>
+		<xs:attribute name="genericRoomType" type="xs:boolean" use="optional"/>
+		<xs:attribute name="meetingRoomType" type="xs:boolean" use="optional"/>
+		<xs:attribute name="numberOfRooms" type="xs:int" use="optional"/>
+		<xs:attribute name="yieldCategory" type="xs:string" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="ComponentRoomTypes">
+		<xs:sequence>
+			<xs:element name="ComponentRoomType" type="ComponentRoomType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ComponentRoomType">
+		<xs:sequence>
+		</xs:sequence>
+		<xs:attribute name="componentRoomType" type="xs:string" use="required"/>
+		<xs:attribute name="componentRoomCount" type="xs:int" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="RoomTypeFeatures">
+		<xs:sequence>
+			<xs:element name="RoomTypeFeature" type="RoomTypeFeature" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RoomTypeFeature">
+		<xs:sequence>
+			<xs:element name="featureComment" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="featureCode" type="xs:string" use="required"/>
+		<xs:attribute name="featureType" type="xs:string" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="ItemInventoryClass">
+		<xs:sequence>
+			<xs:element name="usedIn" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="discountable" type="xs:boolean" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="ItemInventory">
+		<xs:sequence>
+			<xs:element name="DailyItemInventories" type="DailyItemInventories" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="discountable" type="xs:boolean" use="optional"/>
+		<xs:attribute name="critical" type="xs:boolean" use="optional"/>
+		<xs:attribute name="sellControl" type="xs:boolean" use="optional"/>
+		<xs:attribute name="orderExternally" type="xs:boolean" use="optional"/>
+		<xs:attribute name="sellSeparate" type="xs:boolean" use="optional"/>
+		<xs:attribute name="printable" type="xs:boolean" use="optional"/>
+		<xs:attribute name="availableFrom" type="xs:dateTime" use="optional"/>
+		<xs:attribute name="availableTo" type="xs:dateTime" use="optional"/>
+		<xs:attribute name="cost" type="fixed144" use="optional"/>
+		<xs:attribute name="defaultQuantity" type="fixed144" use="optional"/>
+		<xs:attribute name="quantityInStock" type="fixed144" use="optional"/>
+		<xs:attribute name="setDownMinutes" type="fixed144" use="optional"/>
+		<xs:attribute name="setUpMinutes" type="fixed144" use="optional"/>
+		<xs:attribute name="revenueType" type="xs:string" use="optional"/>
+		<xs:attribute name="itemInventoryPool" type="xs:string" use="optional"/>
+		<xs:attribute name="allowOutsideStay" type="xs:boolean" use="optional"/>
+		<xs:attribute name="defaultDuration" type="xs:int" use="optional"/>
+		<xs:attribute name="promptFixedCharges" type="xs:boolean" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="DailyItemInventories">
+		<xs:sequence>
+			<xs:element name="DailyItemInventory" type="DailyItemInventory" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DailyItemInventory">
+		<xs:sequence>
+		</xs:sequence>
+		<xs:attribute name="beginDate" type="xs:date" use="optional"/>
+		<xs:attribute name="endDate" type="xs:date" use="optional"/>
+		<xs:attribute name="quantityInStock" type="fixed144" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="ForeignExchangeRate">
+		<xs:sequence>
+			<xs:element name="comment" type="xs:string" minOccurs="0"/>
+			<xs:element name="beginDateUTC" type="xs:dateTime" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="currencyCode" type="xs:string" use="required"/>
+		<xs:attribute name="exchangeRate" type="fixed144" use="optional"/>
+		<xs:attribute name="exchangeRateType" type="xs:string" use="required"/>
+		<xs:attribute name="buyCommissionPercent" type="fixed144" use="optional"/>
+		<xs:attribute name="buyForexRate" type="fixed144" use="optional"/>
+		<xs:attribute name="sellExchangeRate" type="fixed144" use="optional"/>
+		<xs:attribute name="sellCommissionPercent" type="fixed144" use="optional"/>
+		<xs:attribute name="sellForexRate" type="fixed144" use="optional"/>
+		<xs:attribute name="lockRate" type="xs:boolean" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="BestAvailableRate">
+		<xs:sequence>
+			<xs:element name="DaysOfWeek" type="DaysOfWeek" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="los" type="xs:string" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="DaysOfWeek">
+		<xs:sequence>
+			<xs:element name="monday" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="tuesday" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="wednesday" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="thursday" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="friday" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="saturday" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="sunday" type="xs:boolean" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RelationCfg">
+		<xs:sequence>
+			<xs:element name="toDescription" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="fromType" type="xs:string" use="required"/>
+		<xs:attribute name="individual" type="xs:boolean" use="optional"/>
+		<xs:attribute name="inheritRates" type="xs:boolean" use="optional"/>
+		<xs:attribute name="toType" type="xs:string" use="required"/>
+		<xs:attribute name="toRelation" type="xs:string" use="required"/>
+		<xs:attribute name="toIndividual" type="xs:boolean" use="optional"/>
+		<xs:attribute name="toInheritRates" type="xs:boolean" use="optional"/>
+		<xs:attribute name="primary" type="xs:boolean" use="optional"/>
+		<xs:attribute name="global" type="xs:boolean" use="optional"/>
+		<xs:attribute name="hierarchy" type="xs:boolean" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="MembershipAward">
+		<xs:sequence>
+			<xs:element name="messageLine1" type="xs:string" minOccurs="0"/>
+			<xs:element name="messageLine2" type="xs:string" minOccurs="0"/>
+			<xs:element name="messageLine3" type="xs:string" minOccurs="0"/>
+			<xs:element name="messageLine4" type="xs:string" minOccurs="0"/>
+			<xs:element name="ResortList" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="MembershipAwardProducts" type="MembershipAwardProducts" minOccurs="0"/>
+			<xs:element name="MembershipAwardRates" type="MembershipAwardRates" minOccurs="0"/>
+			<xs:element name="MembershipAwardUpgrades" type="MembershipAwardUpgrades" minOccurs="0"/>
+			<xs:element name="cancelPolicyType" type="xs:string" minOccurs="0"/>
+			<xs:element name="numberOfNights" type="xs:int" minOccurs="0"/>
+			<xs:element name="MembershipAwardTxnCodes" type="MembershipAwardTxnCodes" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="membershipLevel" type="xs:string" use="optional"/>
+		<xs:attribute name="awardQuantity" type="xs:int" use="optional"/>
+		<xs:attribute name="cancelPenaltyDays" type="xs:int" use="optional"/>
+		<xs:attribute name="cancelPenaltyCharge" type="fixed144" use="optional"/>
+		<xs:attribute name="cancelPenaltyType" type="cancelPenaltyType" use="required"/>
+		<xs:attribute name="autoConsume" type="xs:boolean" use="optional"/>
+		<xs:attribute name="forceVerification" type="xs:boolean" use="optional"/>
+		<xs:attribute name="awardBasedOn" type="awardBasedOn" use="required"/>
+		<xs:attribute name="pointsRequired" type="xs:int" use="optional"/>
+		<xs:attribute name="awardValue" type="fixed144" use="optional"/>
+		<xs:attribute name="displaySet" type="xs:string" use="optional"/>
+		<xs:attribute name="exchangeRateType" type="xs:string" use="required"/>
+		<xs:attribute name="maxPercentAllowed" type="fixed144" use="optional"/>
+		<xs:attribute name="pointsScheduleCode" type="xs:string" use="optional"/>
+		<xs:attribute name="billingGroup" type="xs:string" use="optional"/>
+	</xs:complexType>
+	<xs:simpleType name="cancelPenaltyType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="POINTS"/>
+			<xs:enumeration value="PERCENT"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="awardBasedOn">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="RATE"/>
+			<xs:enumeration value="PRODUCT"/>
+			<xs:enumeration value="UPGRADE"/>
+			<xs:enumeration value="FT"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="MembershipAwardProducts">
+		<xs:sequence>
+			<xs:element name="MembershipAwardProduct" type="MembershipAwardProduct" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MembershipAwardProduct">
+		<xs:sequence>
+			<xs:element name="hotelCode" type="xs:string"/>
+		</xs:sequence>
+		<xs:attribute name="product" type="xs:string" use="optional"/>
+		<xs:attribute name="inactiveDate" type="xs:dateTime" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="MembershipAwardRates">
+		<xs:sequence>
+			<xs:element name="MembershipAwardRate" type="MembershipAwardRate" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MembershipAwardRate">
+		<xs:sequence>
+			<xs:element name="hotelCode" type="xs:string"/>
+		</xs:sequence>
+		<xs:attribute name="rateCode" type="xs:string" use="optional"/>
+		<xs:attribute name="inactiveDate" type="xs:dateTime" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="MembershipAwardUpgrades">
+		<xs:sequence>
+			<xs:element name="MembershipAwardUpgrade" type="MembershipAwardUpgrade" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MembershipAwardUpgrade">
+		<xs:sequence>
+			<xs:element name="hotelCode" type="xs:string"/>
+		</xs:sequence>
+		<xs:attribute name="fromRoomType" type="xs:string" use="required"/>
+		<xs:attribute name="toRoomType" type="xs:string" use="required"/>
+		<xs:attribute name="beginDate" type="xs:date" use="optional"/>
+		<xs:attribute name="endDate" type="xs:date" use="optional"/>
+		<xs:attribute name="pointsRequired" type="xs:int" use="optional"/>
+		<xs:attribute name="inactiveDate" type="xs:dateTime" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="MembershipAwardTxnCodes">
+		<xs:sequence>
+			<xs:element name="MembershipAwardTxnCode" type="MembershipAwardTxnCode" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MembershipAwardTxnCode">
+		<xs:sequence>
+			<xs:element name="hotelCode" type="xs:string"/>
+		</xs:sequence>
+		<xs:attribute name="transactionCode" type="xs:string" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="MembershipPointSchedules">
+		<xs:sequence>
+			<xs:element name="MembershipPointSchedule" type="MembershipPointSchedule" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MembershipPointSchedule">
+		<xs:sequence>
+		</xs:sequence>
+		<xs:attribute name="beginDate" type="xs:date" use="optional"/>
+		<xs:attribute name="endDate" type="xs:date" use="optional"/>
+		<xs:attribute name="pointVariation" type="fixed144" use="required"/>
+		<xs:attribute name="pointVariationType" type="pointVariationType" use="required"/>
+		<xs:attribute name="inactiveDate" type="xs:dateTime" use="optional"/>
+	</xs:complexType>
+	<xs:simpleType name="pointVariationType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="FLAT"/>
+			<xs:enumeration value="PERCENTAGE"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="PromotionCode">
+		<xs:sequence>
+			<xs:element name="promotionCategoryDescription" type="xs:string" minOccurs="0"/>
+			<xs:element name="promotionInstructions" type="xs:string" minOccurs="0"/>
+			<xs:element name="idRequirementDescription" type="xs:string" minOccurs="0"/>
+			<xs:element name="PromotionRateCodes" type="PromotionRateCodes" minOccurs="0"/>
+			<xs:element name="voucherBenefitCode" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="stayBeginDate" type="xs:date" use="optional"/>
+		<xs:attribute name="stayEndDate" type="xs:date" use="optional"/>
+		<xs:attribute name="promotionCategory" type="xs:string" use="optional"/>
+		<xs:attribute name="upgradeAllowed" type="xs:boolean" use="optional"/>
+		<xs:attribute name="idRequired" type="xs:boolean" use="optional"/>
+		<xs:attribute name="checkinTime" type="xs:dateTime" use="optional"/>
+		<xs:attribute name="checkoutTime" type="xs:dateTime" use="optional"/>
+		<xs:attribute name="updResvOutsideBookingDts" type="xs:boolean" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="PromotionRateCodes">
+		<xs:sequence>
+			<xs:element name="PromotionRateCode" type="PromotionRateCode" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PromotionRateCode">
+		<xs:sequence>
+			<xs:element name="rateUseDescription" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="rateCode" type="xs:string" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="TransactionCodeConfig">
+		<xs:sequence>
+			<xs:element name="trxCodeSubGroup" type="xs:string" minOccurs="0"/>
+			<xs:element name="trxCodeType" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="FunctionSpace">
+		<xs:sequence>
+			<xs:element name="spaceName" type="xs:string" minOccurs="0"/>
+			<xs:element name="spaceType" type="xs:string" minOccurs="0"/>
+			<xs:element name="location" type="xs:string" minOccurs="0"/>
+			<xs:element name="minimumCapacity" type="xs:int" minOccurs="0"/>
+			<xs:element name="maximumCapacity" type="xs:int" minOccurs="0"/>
+			<xs:element name="combo" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="forceAlternate" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="shareable" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="handicapAccessible" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="displayInDiary" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="fbMinimum" type="fixed144" minOccurs="0"/>
+			<xs:element name="customOrder1" type="xs:int" minOccurs="0"/>
+			<xs:element name="customOrder2" type="xs:int" minOccurs="0"/>
+			<xs:element name="customOrder3" type="xs:int" minOccurs="0"/>
+			<xs:element name="fullOccupancyMinutes" type="xs:int" minOccurs="0"/>
+			<xs:element name="shareMaximum" type="xs:int" minOccurs="0"/>
+			<xs:element name="areaSqft" type="fixed144" minOccurs="0"/>
+			<xs:element name="lengthFt" type="fixed144" minOccurs="0"/>
+			<xs:element name="widthFt" type="fixed144" minOccurs="0"/>
+			<xs:element name="minimumHeightFt" type="fixed144" minOccurs="0"/>
+			<xs:element name="maximumHeightFt" type="fixed144" minOccurs="0"/>
+			<xs:element name="weightLbSqft" type="fixed144" minOccurs="0"/>
+			<xs:element name="doors" type="xs:int" minOccurs="0"/>
+			<xs:element name="notes" type="xs:string" minOccurs="0"/>
+			<xs:element name="minimumAdvanceBooking" type="xs:int" minOccurs="0"/>
+			<xs:element name="maximumAdvanceBooking" type="xs:int" minOccurs="0"/>
+			<xs:element name="webViewable" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="webBookable" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="floorList" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="forceExcludedEventList" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="FunctionComboElements" type="FunctionComboElements" minOccurs="0"/>
+			<xs:element name="FunctionSpaceRates" type="FunctionSpaceRates" minOccurs="0"/>
+			<xs:element name="FunctionSeasonalRates" type="FunctionSeasonalRates" minOccurs="0"/>
+			<xs:element name="FunctionSpaceSetups" type="FunctionSpaceSetups" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="FunctionComboElements">
+		<xs:sequence>
+			<xs:element name="FunctionComboElement" type="FunctionComboElement" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="FunctionComboElement">
+		<xs:sequence>
+			<xs:element name="comboRoomElement" type="xs:string" minOccurs="0"/>
+			<xs:element name="percentUtilized" type="fixed144" minOccurs="0"/>
+			<xs:element name="areaUtilized" type="fixed144" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="FunctionSpaceRates">
+		<xs:sequence>
+			<xs:element name="FunctionSpaceRate" type="FunctionSpaceRate" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="FunctionSpaceRate">
+		<xs:sequence>
+			<xs:element name="rateType" type="xs:string" minOccurs="0"/>
+			<xs:element name="rateAmount" type="fixed144" minOccurs="0"/>
+			<xs:element name="defaultRecord" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="hourly" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="enforceMinimumRevenue" type="xs:boolean" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="rateCode" type="xs:string" use="optional"/>
+		<xs:attribute name="revenueType" type="xs:string" use="optional"/>
+		<xs:attribute name="inactiveDate" type="xs:dateTime" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="FunctionSeasonalRates">
+		<xs:sequence>
+			<xs:element name="FunctionSeasonalRate" type="FunctionSeasonalRate" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="FunctionSeasonalRate">
+		<xs:sequence>
+			<xs:element name="rateAmount" type="fixed144" minOccurs="0"/>
+			<xs:element name="minimumAdvanceBooking" type="xs:int" minOccurs="0"/>
+			<xs:element name="maximumAdvanceBooking" type="xs:int" minOccurs="0"/>
+			<xs:element name="enforceMinimumRevenue" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="minimumRevenue" type="fixed144" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="rateCode" type="xs:string" use="optional"/>
+		<xs:attribute name="beginDate" type="xs:date" use="optional"/>
+		<xs:attribute name="endDate" type="xs:date" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="FunctionSpaceSetups">
+		<xs:sequence>
+			<xs:element name="FunctionSpaceSetup" type="FunctionSpaceSetup" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="FunctionSpaceSetup">
+		<xs:sequence>
+			<xs:element name="setupCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="defaultRecord" type="xs:boolean" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="setUpMinutes" type="fixed144" use="optional"/>
+		<xs:attribute name="setDownMinutes" type="fixed144" use="optional"/>
+		<xs:attribute name="minimumOccupancy" type="xs:int" use="optional"/>
+		<xs:attribute name="maximumOccupancy" type="xs:int" use="optional"/>
+		<xs:attribute name="inactiveDate" type="xs:dateTime" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="MembershipFeeCodes">
+		<xs:sequence>
+			<xs:element name="MembershipFeeCode" type="MembershipFeeCode" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MembershipFeeCode">
+		<xs:sequence>
+			<xs:element name="feeCode" type="xs:string"/>
+			<xs:element name="feeLabel" type="xs:string" minOccurs="0"/>
+			<xs:element name="description" type="xs:string" minOccurs="0"/>
+			<xs:element name="MembershipFeeAmounts" type="MembershipFeeAmounts" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="inactiveDate" type="xs:dateTime" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="MembershipFeeAmounts">
+		<xs:sequence>
+			<xs:element name="MembershipFeeAmount" type="MembershipFeeAmount" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MembershipFeeAmount">
+		<xs:sequence>
+		</xs:sequence>
+		<xs:attribute name="membershipLevel" type="xs:string" use="optional"/>
+		<xs:attribute name="inactiveDate" type="xs:dateTime" use="optional"/>
+		<xs:attribute name="amount" type="fixed144" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="MemberManagementDisplays">
+		<xs:sequence>
+			<xs:element name="MemberManagementDisplay" type="MemberManagementDisplay" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MemberManagementDisplay">
+		<xs:sequence>
+			<xs:element name="displayMode" type="xs:string"/>
+			<xs:element name="entityName" type="xs:string"/>
+			<xs:element name="codeTypeKeyval" type="xs:string" minOccurs="0"/>
+			<xs:element name="required" type="xs:boolean" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="inactiveDate" type="xs:dateTime" use="optional"/>
+		<xs:attribute name="displaySequence" type="xs:int" use="optional"/>
+	</xs:complexType>
+</xs:schema>

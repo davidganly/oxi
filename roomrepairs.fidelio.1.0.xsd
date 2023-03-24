@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="roomrepairs.fidelio.1.0" xmlns="roomrepairs.fidelio.1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="RoomRepairMessage" type = "RoomRepairMessage">
+		<xs:annotation>
+			<xs:documentation>RoomRepairMessage schema</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="RoomRepairMessage">
+		<xs:sequence>
+			<xs:element name="HotelReference" type="HotelReference"/>
+			<xs:element name="roomType" type="xs:string"/>
+			<xs:element name="roomNumber" type="xs:string"/>
+			<xs:element name="RoomRepairs" type="RoomRepairs" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="messageType" type="xs:string" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="HotelReference">
+		<xs:sequence>
+			<xs:element name="chainCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="hotelCode" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RoomRepairs">
+		<xs:sequence>
+			<xs:element name="RoomRepair" type="RoomRepair" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RoomRepair">
+		<xs:sequence>
+			<xs:element name="beginDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="endDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="roomStatus" type="xs:string" minOccurs="0"/>
+			<xs:element name="repairReason" type="xs:string" minOccurs="0"/>
+			<xs:element name="repairRemarks" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

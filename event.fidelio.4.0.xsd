@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="event.fidelio.4.0" xmlns="event.fidelio.4.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="Event" type = "Event">
+		<xs:annotation>
+			<xs:documentation>Event schema</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="Event">
+		<xs:sequence>
+			<xs:element name="HotelReference" type="HotelReference"/>
+			<xs:element name="AllotmentId" type="AllotmentId"/>
+			<xs:element name="MainEvents" type="MainEvents"/>
+		</xs:sequence>
+		<xs:attribute name="actionType" type="actionType" use="optional"/>
+	</xs:complexType>
+	<xs:simpleType name="actionType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="NA"/>
+			<xs:enumeration value="NEW"/>
+			<xs:enumeration value="CHANGE"/>
+			<xs:enumeration value="DELETE"/>
+			<xs:enumeration value="SYNC_ONE"/>
+			<xs:enumeration value="SYNC_ALL"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="HotelReference">
+		<xs:sequence>
+			<xs:element name="chainCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="hotelCode" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AllotmentId">
+		<xs:sequence>
+			<xs:element name="mfAllotmentCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="mfAllotmentId" type="xs:string" minOccurs="0"/>
+			<xs:element name="mfResortAllotmentId" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MainEvents">
+		<xs:sequence>
+			<xs:element name="MainEvent" type="MainEvent" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MainEvent">
+		<xs:sequence>
+			<xs:element name="CateringEvent" type="CateringEvent"/>
+			<xs:element name="LinkedEventId" type="LinkedEventId" minOccurs="0"/>
+			<xs:element name="EventReservation" type="EventReservation" minOccurs="0"/>
+			<xs:element name="SubEvents" type="SubEvents" minOccurs="0"/>
+			<xs:element name="AlternateEvents" type="AlternateEvents" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CateringEvent">
+		<xs:sequence>
+			<xs:element name="EventId" type="EventId"/>
+			<xs:element name="groupName" type="xs:string" minOccurs="0"/>
+			<xs:element name="attendees" type="fixed144" minOccurs="0"/>
+			<xs:element name="doorCard" type="xs:string" minOccurs="0"/>
+			<xs:element name="endDate" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="evName" type="xs:string" minOccurs="0"/>
+			<xs:element name="evStatus" type="xs:string" minOccurs="0"/>
+			<xs:element name="evType" type="xs:string" minOccurs="0"/>
+			<xs:element name="guaranteed" type="fixed144" minOccurs="0"/>
+			<xs:element name="problem" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="startDate" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="tracecode" type="xs:string" minOccurs="0"/>
+			<xs:element name="wlIgnore" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="masterEvent" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="programDesc" type="xs:string" minOccurs="0"/>
+			<xs:element name="earliestStart" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="latestEnd" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="room" type="xs:string" minOccurs="0"/>
+			<xs:element name="roomSetup" type="xs:string" minOccurs="0"/>
+			<xs:element name="setupTime" type="fixed144" minOccurs="0"/>
+			<xs:element name="setdownTime" type="fixed144" minOccurs="0"/>
+			<xs:element name="actualAttendees" type="fixed144" minOccurs="0"/>
+			<xs:element name="dontMove" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="turnToStatus" type="xs:string" minOccurs="0"/>
+			<xs:element name="waitlist" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="actualManual" type="xs:string" minOccurs="0"/>
+			<xs:element name="inspected" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="inspectedDate" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="inspectedUser" type="xs:string" minOccurs="0"/>
+			<xs:element name="displayDoorCard" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="attendeesType" type="xs:string" minOccurs="0"/>
+			<xs:element name="pkgExpAttendees" type="fixed144" minOccurs="0"/>
+			<xs:element name="pkgGuaAttendees" type="fixed144" minOccurs="0"/>
+			<xs:element name="pkgActAttendees" type="fixed144" minOccurs="0"/>
+			<xs:element name="forecastRevenueOnly" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="excludeFromForecast" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="pkgName" type="xs:string" minOccurs="0"/>
+			<xs:element name="EventNotes" type="EventNotes" minOccurs="0"/>
+			<xs:element name="EventRevenues" type="EventRevenues" minOccurs="0"/>
+			<xs:element name="EventRevenueSummaries" type="EventRevenueSummaries" minOccurs="0"/>
+			<xs:element name="setAttendees" type="fixed144" minOccurs="0"/>
+			<xs:element name="currencyCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="packageCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="fbAgendaId" type="fbAgendaId" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="fixed144">
+		<xs:restriction base="xs:decimal">
+			<xs:totalDigits value="14"/>
+			<xs:fractionDigits value="4"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="EventId">
+		<xs:sequence>
+			<xs:element name="hotelCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="eventId" type="xs:string" minOccurs="0"/>
+			<xs:element name="resortEventId" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="EventNotes">
+		<xs:sequence>
+			<xs:element name="EventNote" type="EventNote" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="EventNote">
+		<xs:sequence>
+			<xs:element name="noteCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="noteTitle" type="xs:string" minOccurs="0"/>
+			<xs:element name="notes" type="xs:string" minOccurs="0"/>
+			<xs:element name="orderBy" type="fixed144" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="EventRevenues">
+		<xs:sequence>
+			<xs:element name="EventRevenue" type="EventRevenue" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="EventRevenue">
+		<xs:sequence>
+			<xs:element name="actualCost" type="fixed144" minOccurs="0"/>
+			<xs:element name="actualRevenue" type="fixed144" minOccurs="0"/>
+			<xs:element name="billedCost" type="fixed144" minOccurs="0"/>
+			<xs:element name="billedRevenue" type="fixed144" minOccurs="0"/>
+			<xs:element name="custom" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="expectedCost" type="fixed144" minOccurs="0"/>
+			<xs:element name="expectedRevenue" type="fixed144" minOccurs="0"/>
+			<xs:element name="flat" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="forecastEdited" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="forecastRevenue" type="fixed144" minOccurs="0"/>
+			<xs:element name="guaranteedCost" type="fixed144" minOccurs="0"/>
+			<xs:element name="guaranteedRevenue" type="fixed144" minOccurs="0"/>
+			<xs:element name="ignoreForecast" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="orderBy" type="fixed144" minOccurs="0"/>
+			<xs:element name="pkgRevenue" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="revGroup" type="xs:string" minOccurs="0"/>
+			<xs:element name="revType" type="xs:string" minOccurs="0"/>
+			<xs:element name="fsDeltaActualRevenue" type="fixed144" minOccurs="0"/>
+			<xs:element name="fsDeltaBilledRevenue" type="fixed144" minOccurs="0"/>
+			<xs:element name="fsDeltaExpectedRevenue" type="fixed144" minOccurs="0"/>
+			<xs:element name="fsDeltaGuaranteedRevenue" type="fixed144" minOccurs="0"/>
+			<xs:element name="fsRateCode" type="xs:boolean" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="EventRevenueSummaries">
+		<xs:sequence>
+			<xs:element name="EventRevenueSummary" type="EventRevenueSummary" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="EventRevenueSummary">
+		<xs:sequence>
+			<xs:element name="revGroup" type="xs:string" minOccurs="0"/>
+			<xs:element name="revAmount" type="fixed144" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="fbAgendaId">
+		<xs:sequence>
+			<xs:element name="fbaCentralId" type="xs:string" minOccurs="0"/>
+			<xs:element name="fbaResortId" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="LinkedEventId">
+		<xs:sequence>
+			<xs:element name="EventId" type="EventId" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="linkType" type="linkType" use="optional"/>
+	</xs:complexType>
+	<xs:simpleType name="linkType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="SUBMASTER"/>
+			<xs:enumeration value="ALTMASTER"/>
+			<xs:enumeration value="NEWSUBMASTER"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="EventReservation">
+		<xs:sequence>
+			<xs:element name="attendees" type="fixed144" minOccurs="0"/>
+			<xs:element name="beginDate" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="discountAmount" type="fixed144" minOccurs="0"/>
+			<xs:element name="discountPercentage" type="fixed144" minOccurs="0"/>
+			<xs:element name="discountReasonCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="dontMove" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="endDate" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="fixedRate" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="noisy" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="rateCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="rateAmount" type="fixed144" minOccurs="0"/>
+			<xs:element name="room" type="xs:string" minOccurs="0"/>
+			<xs:element name="roomType" type="xs:string" minOccurs="0"/>
+			<xs:element name="roomClass" type="xs:string" minOccurs="0"/>
+			<xs:element name="setdownTime" type="fixed144" minOccurs="0"/>
+			<xs:element name="setupCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="setupDesc" type="xs:string" minOccurs="0"/>
+			<xs:element name="setupTime" type="fixed144" minOccurs="0"/>
+			<xs:element name="shared" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="pkgName" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SubEvents">
+		<xs:sequence>
+			<xs:element name="CateringEvent" type="CateringEvent" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AlternateEvents">
+		<xs:sequence>
+			<xs:element name="AlternateEvent" type="AlternateEvent" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AlternateEvent">
+		<xs:sequence>
+			<xs:element name="EventId" type="EventId" minOccurs="0"/>
+			<xs:element name="rateCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="room" type="xs:string" minOccurs="0"/>
+			<xs:element name="setupCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="shared" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="rateAmount" type="fixed144" minOccurs="0"/>
+			<xs:element name="eventName" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

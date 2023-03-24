@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="cateringrevenue.fidelio.1.0" xmlns="cateringrevenue.fidelio.1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="CateringRevenue" type = "CateringRevenue">
+		<xs:annotation>
+			<xs:documentation>CateringRevenue schema</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="CateringRevenue">
+		<xs:sequence>
+			<xs:element name="HotelReference" type="HotelReference"/>
+			<xs:element name="CatRevenues" type="CatRevenues" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="HotelReference">
+		<xs:sequence>
+			<xs:element name="chainCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="hotelCode" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CatRevenues">
+		<xs:sequence>
+			<xs:element name="CatRevenue" type="CatRevenue" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CatRevenue">
+		<xs:sequence>
+			<xs:element name="mfAllotmentId" type="xs:string" minOccurs="0"/>
+			<xs:element name="mfResortAllotmentId" type="xs:string" minOccurs="0"/>
+			<xs:element name="allotmentCode" type="xs:string"/>
+			<xs:element name="allotmentBeginDate" type="xs:date"/>
+			<xs:element name="eventId" type="xs:string"/>
+			<xs:element name="revGroup" type="xs:string" minOccurs="0"/>
+			<xs:element name="revType" type="xs:string"/>
+			<xs:element name="evType" type="xs:string" minOccurs="0"/>
+			<xs:element name="coverable" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="evStatus" type="xs:string"/>
+			<xs:element name="room" type="xs:string" minOccurs="0"/>
+			<xs:element name="startDate" type="xs:dateTime"/>
+			<xs:element name="endDate" type="xs:dateTime"/>
+			<xs:element name="flat" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="custom" type="xs:boolean"/>
+			<xs:element name="forecastEdited" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="forecastRevenue" type="fixed144" minOccurs="0"/>
+			<xs:element name="expectedRevenue" type="fixed144" minOccurs="0"/>
+			<xs:element name="guaranteedRevenue" type="fixed144" minOccurs="0"/>
+			<xs:element name="billedRevenue" type="fixed144" minOccurs="0"/>
+			<xs:element name="actualRevenue" type="fixed144" minOccurs="0"/>
+			<xs:element name="ignoreForecast" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="pkgRevenue" type="xs:boolean"/>
+			<xs:element name="orderBy" type="xs:int" minOccurs="0"/>
+			<xs:element name="insertDate" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="insertUser" type="xs:string" minOccurs="0"/>
+			<xs:element name="updateDate" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="updateUser" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="fixed144">
+		<xs:restriction base="xs:decimal">
+			<xs:totalDigits value="14"/>
+			<xs:fractionDigits value="4"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

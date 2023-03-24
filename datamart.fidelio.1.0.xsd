@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="datamart.fidelio.1.0" xmlns="datamart.fidelio.1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="Datamart" type = "Datamart">
+		<xs:annotation>
+			<xs:documentation>Datamart schema</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="Datamart">
+		<xs:sequence>
+			<xs:element name="HotelReference" type="HotelReference"/>
+			<xs:element name="CatSnapshots" type="CatSnapshots" minOccurs="0"/>
+			<xs:element name="CatProductions" type="CatProductions" minOccurs="0"/>
+			<xs:element name="AllotmentDailyStatistics" type="AllotmentDailyStatistics" minOccurs="0"/>
+			<xs:element name="ProfileDailyStats" type="ProfileDailyStats" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="dmType" type="xs:string" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="HotelReference">
+		<xs:sequence>
+			<xs:element name="chainCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="hotelCode" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CatSnapshots">
+		<xs:sequence>
+			<xs:element name="CatSnapshot" type="CatSnapshot" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CatSnapshot">
+		<xs:sequence>
+			<xs:element name="mfAllotmentId" type="xs:string" minOccurs="0"/>
+			<xs:element name="mfResortAllotmentId" type="xs:string" minOccurs="0"/>
+			<xs:element name="allotmentCode" type="xs:string"/>
+			<xs:element name="allotmentBeginDate" type="xs:date"/>
+			<xs:element name="statusChangeDate" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="currentCatStatus" type="xs:string" minOccurs="0"/>
+			<xs:element name="priorCatStatus" type="xs:string" minOccurs="0"/>
+			<xs:element name="revenueType" type="xs:string" minOccurs="0"/>
+			<xs:element name="revenue" type="fixed144" minOccurs="0"/>
+			<xs:element name="attendees" type="xs:int" minOccurs="0"/>
+			<xs:element name="pkgRevenue" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="insertDate" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="insertUser" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="fixed144">
+		<xs:restriction base="xs:decimal">
+			<xs:totalDigits value="14"/>
+			<xs:fractionDigits value="4"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="CatProductions">
+		<xs:sequence>
+			<xs:element name="CatProduction" type="CatProduction" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CatProduction">
+		<xs:sequence>
+			<xs:element name="mfAllotmentId" type="xs:string" minOccurs="0"/>
+			<xs:element name="mfResortAllotmentId" type="xs:string" minOccurs="0"/>
+			<xs:element name="allotmentCode" type="xs:string"/>
+			<xs:element name="allotmentBeginDate" type="xs:date"/>
+			<xs:element name="eventId" type="xs:string" minOccurs="0"/>
+			<xs:element name="eventStatus" type="xs:string" minOccurs="0"/>
+			<xs:element name="eventType" type="xs:string" minOccurs="0"/>
+			<xs:element name="eventStartDate" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="eventEndDate" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="eventSpace" type="xs:string" minOccurs="0"/>
+			<xs:element name="coverable" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="changeId" type="xs:string" minOccurs="0"/>
+			<xs:element name="changeDate" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="changeEventStatus" type="xs:string" minOccurs="0"/>
+			<xs:element name="changeAttendees" type="xs:int" minOccurs="0"/>
+			<xs:element name="changeCatSrep" type="xs:string" minOccurs="0"/>
+			<xs:element name="changeCatSrepResort" type="xs:string" minOccurs="0"/>
+			<xs:element name="changeRevenue" type="fixed144" minOccurs="0"/>
+			<xs:element name="changeRevenueType" type="xs:string" minOccurs="0"/>
+			<xs:element name="changeRevenueByPkg" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="catCurrency" type="xs:string" minOccurs="0"/>
+			<xs:element name="propertyCurrency" type="xs:string" minOccurs="0"/>
+			<xs:element name="exchangeRate" type="fixed144" minOccurs="0"/>
+			<xs:element name="insertDate" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="insertUser" type="xs:string" minOccurs="0"/>
+			<xs:element name="updateDate" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="updateUser" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AllotmentDailyStatistics">
+		<xs:sequence>
+			<xs:element name="AllotmentDailyStatistic" type="AllotmentDailyStatistic" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AllotmentDailyStatistic">
+		<xs:sequence>
+			<xs:element name="mfAllotmentId" type="xs:string" minOccurs="0"/>
+			<xs:element name="mfResortAllotmentId" type="xs:string" minOccurs="0"/>
+			<xs:element name="allotmentCode" type="xs:string"/>
+			<xs:element name="allotmentBeginDate" type="xs:date"/>
+			<xs:element name="roomType" type="xs:string" minOccurs="0"/>
+			<xs:element name="allotmentDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="resortAllotmentDetailId" type="xs:string" minOccurs="0"/>
+			<xs:element name="forecastedToSell" type="xs:int" minOccurs="0"/>
+			<xs:element name="toSell" type="xs:int" minOccurs="0"/>
+			<xs:element name="sold" type="xs:int" minOccurs="0"/>
+			<xs:element name="released" type="xs:int" minOccurs="0"/>
+			<xs:element name="totalRevenue" type="fixed144" minOccurs="0"/>
+			<xs:element name="roomRevenue" type="fixed144" minOccurs="0"/>
+			<xs:element name="foodRevenue" type="fixed144" minOccurs="0"/>
+			<xs:element name="otherRevenue" type="fixed144" minOccurs="0"/>
+			<xs:element name="nonRevenue" type="fixed144" minOccurs="0"/>
+			<xs:element name="totalTax" type="fixed144" minOccurs="0"/>
+			<xs:element name="adults" type="xs:int" minOccurs="0"/>
+			<xs:element name="shoulderYn" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ProfileDailyStats">
+		<xs:sequence>
+			<xs:element name="ProfileDailyStat" type="ProfileDailyStat" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ProfileDailyStat">
+		<xs:sequence>
+			<xs:element name="startDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="propertyPreferences" type="xs:int" minOccurs="0"/>
+			<xs:element name="globalPreferences" type="xs:int" minOccurs="0"/>
+			<xs:element name="internalNotesTot" type="xs:int" minOccurs="0"/>
+			<xs:element name="internalNotesRejected" type="xs:int" minOccurs="0"/>
+			<xs:element name="internalNotesSubmitted" type="xs:int" minOccurs="0"/>
+			<xs:element name="internalNotesAccepted" type="xs:int" minOccurs="0"/>
+			<xs:element name="internalNotesAutoRejected" type="xs:int" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

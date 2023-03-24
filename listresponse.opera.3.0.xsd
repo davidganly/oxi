@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="listresponse.opera.3.0" xmlns="listresponse.opera.3.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="ListResponse" type = "ListResponse">
+		<xs:annotation>
+			<xs:documentation>ListResponse schema</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="ListResponse">
+		<xs:sequence>
+			<xs:element name="HotelReference" type="HotelReference"/>
+			<xs:element name="lrReservations" type="lrReservations"/>
+			<xs:element name="lrAllotments" type="lrAllotments"/>
+			<xs:element name="lrRateCodes" type="lrRateCodes"/>
+			<xs:element name="lrOtherMessages" type="lrOtherMessages"/>
+		</xs:sequence>
+		<xs:attribute name="requestId" type="xs:string" use="required"/>
+		<xs:attribute name="timeStamp" type="xs:dateTime" use="required"/>
+		<xs:attribute name="messageType" type="xs:string" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="HotelReference">
+		<xs:sequence>
+			<xs:element name="chainCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="hotelCode" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="lrReservations">
+		<xs:sequence>
+			<xs:element name="lrReservation" type="lrReservation" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="lrReservation">
+		<xs:sequence>
+		</xs:sequence>
+		<xs:attribute name="pmsId" type="xs:string" use="optional"/>
+		<xs:attribute name="pmsLeg" type="xs:int" use="optional"/>
+		<xs:attribute name="crsId" type="xs:string" use="optional"/>
+		<xs:attribute name="crsLeg" type="xs:int" use="optional"/>
+		<xs:attribute name="status" type="xs:string" use="required"/>
+		<xs:attribute name="guestLastName" type="xs:string" use="required"/>
+		<xs:attribute name="guestFirstName" type="xs:string" use="optional"/>
+		<xs:attribute name="beginDate" type="xs:date" use="optional"/>
+		<xs:attribute name="endDate" type="xs:date" use="optional"/>
+		<xs:attribute name="messageId" type="xs:int" use="optional"/>
+		<xs:attribute name="timeStamp" type="xs:dateTime" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="lrAllotments">
+		<xs:sequence>
+			<xs:element name="lrAllotment" type="lrAllotment" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="lrAllotment">
+		<xs:sequence>
+		</xs:sequence>
+		<xs:attribute name="code" type="xs:string" use="required"/>
+		<xs:attribute name="name" type="xs:string" use="required"/>
+		<xs:attribute name="beginDate" type="xs:date" use="optional"/>
+		<xs:attribute name="endDate" type="xs:date" use="optional"/>
+		<xs:attribute name="originalBeginDate" type="xs:date" use="optional"/>
+		<xs:attribute name="messageId" type="xs:int" use="optional"/>
+		<xs:attribute name="timeStamp" type="xs:dateTime" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="lrRateCodes">
+		<xs:sequence>
+			<xs:element name="lrRateCode" type="lrRateCode" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="lrRateCode">
+		<xs:sequence>
+		</xs:sequence>
+		<xs:attribute name="code" type="xs:string" use="required"/>
+		<xs:attribute name="beginDate" type="xs:date" use="optional"/>
+		<xs:attribute name="endDate" type="xs:date" use="optional"/>
+		<xs:attribute name="messageId" type="xs:int" use="optional"/>
+		<xs:attribute name="timeStamp" type="xs:dateTime" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="lrOtherMessages">
+		<xs:sequence>
+			<xs:element name="lrOtherMessage" type="lrOtherMessage" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="lrOtherMessage">
+		<xs:sequence>
+		</xs:sequence>
+		<xs:attribute name="code" type="xs:string" use="required"/>
+		<xs:attribute name="subCode" type="xs:string" use="optional"/>
+		<xs:attribute name="description" type="xs:string" use="optional"/>
+		<xs:attribute name="beginDate" type="xs:date" use="optional"/>
+		<xs:attribute name="endDate" type="xs:date" use="optional"/>
+		<xs:attribute name="messageId" type="xs:int" use="optional"/>
+		<xs:attribute name="timeStamp" type="xs:dateTime" use="required"/>
+	</xs:complexType>
+</xs:schema>

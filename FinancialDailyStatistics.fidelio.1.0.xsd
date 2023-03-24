@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="FinancialDailyStats.fidelio.1.0" xmlns="FinancialDailyStats.fidelio.1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="FinancialDailyStats" type = "FinancialDailyStats">
+		<xs:annotation>
+			<xs:documentation>FinancialDailyStats schema</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="FinancialDailyStats">
+		<xs:sequence>
+			<xs:element name="businessDate" type="xs:date"/>
+			<xs:element name="setNo" type="xs:int"/>
+			<xs:element name="setCount" type="xs:int"/>
+			<xs:element name="DailyStatistics" type="DailyStatistics" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DailyStatistics">
+		<xs:sequence>
+			<xs:element name="DailyStatistic" type="DailyStatistic" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DailyStatistic">
+		<xs:sequence>
+			<xs:element name="businessDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="grossAmount" type="fixed144" minOccurs="0"/>
+			<xs:element name="nameId" type="xs:int" minOccurs="0"/>
+			<xs:element name="netAmount" type="fixed144" minOccurs="0"/>
+			<xs:element name="pmsDeptCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="resort" type="xs:string" minOccurs="0"/>
+			<xs:element name="tcSubgroup" type="xs:string" minOccurs="0"/>
+			<xs:element name="trxCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="marketCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="reservationID" type="xs:string" minOccurs="0"/>
+			<xs:element name="confirmationID" type="xs:string" minOccurs="0"/>
+			<xs:element name="mfConfirmationLegNo" type="xs:int" minOccurs="0"/>
+			<xs:element name="checkNumber" type="xs:string" minOccurs="0"/>
+			<xs:element name="checkNumberId" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="fixed144">
+		<xs:restriction base="xs:decimal">
+			<xs:totalDigits value="14"/>
+			<xs:fractionDigits value="4"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

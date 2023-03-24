@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="ReservationSummary.fidelio.1.0" xmlns="ReservationSummary.fidelio.1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="ReservationSummary" type = "ReservationSummary">
+		<xs:annotation>
+			<xs:documentation>ReservationSummary schema</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="ReservationSummary">
+		<xs:sequence>
+			<xs:element name="HotelReference" type="HotelReference"/>
+			<xs:element name="ResvSummaries" type="ResvSummaries" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="HotelReference">
+		<xs:sequence>
+			<xs:element name="chainCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="hotelCode" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ResvSummaries">
+		<xs:sequence>
+			<xs:element name="ResvSummary" type="ResvSummary" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ResvSummary">
+		<xs:sequence>
+			<xs:element name="eventType" type="xs:string" minOccurs="0"/>
+			<xs:element name="eventId" type="xs:string" minOccurs="0"/>
+			<xs:element name="consideredDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="roomType" type="xs:string" minOccurs="0"/>
+			<xs:element name="roomClass" type="xs:string" minOccurs="0"/>
+			<xs:element name="marketCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="sourceCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="rateCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="regionCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="groupId" type="xs:string" minOccurs="0"/>
+			<xs:element name="resvType" type="xs:string" minOccurs="0"/>
+			<xs:element name="resvInvType" type="xs:string" minOccurs="0"/>
+			<xs:element name="psuedoRoom" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="arrRooms" type="xs:int" minOccurs="0"/>
+			<xs:element name="adults" type="xs:int" minOccurs="0"/>
+			<xs:element name="children" type="xs:int" minOccurs="0"/>
+			<xs:element name="depRooms" type="xs:int" minOccurs="0"/>
+			<xs:element name="noRooms" type="xs:int" minOccurs="0"/>
+			<xs:element name="grossRate" type="fixed144" minOccurs="0"/>
+			<xs:element name="netRoomRevenue" type="fixed144" minOccurs="0"/>
+			<xs:element name="extraRevenue" type="fixed144" minOccurs="0"/>
+			<xs:element name="ooRooms" type="xs:int" minOccurs="0"/>
+			<xs:element name="osRooms" type="xs:int" minOccurs="0"/>
+			<xs:element name="remainingBlockRooms" type="xs:int" minOccurs="0"/>
+			<xs:element name="pickedupBlockRooms" type="xs:int" minOccurs="0"/>
+			<xs:element name="singleOccupancy" type="xs:int" minOccurs="0"/>
+			<xs:element name="multipleOccupancy" type="xs:int" minOccurs="0"/>
+			<xs:element name="blockStatus" type="xs:string" minOccurs="0"/>
+			<xs:element name="arrPersons" type="xs:int" minOccurs="0"/>
+			<xs:element name="depPersons" type="xs:int" minOccurs="0"/>
+			<xs:element name="wlRooms" type="xs:int" minOccurs="0"/>
+			<xs:element name="wlPersons" type="xs:int" minOccurs="0"/>
+			<xs:element name="dayUseRooms" type="xs:int" minOccurs="0"/>
+			<xs:element name="dayUsePersons" type="xs:int" minOccurs="0"/>
+			<xs:element name="bookingStatus" type="xs:string" minOccurs="0"/>
+			<xs:element name="resvStatus" type="xs:string" minOccurs="0"/>
+			<xs:element name="dayUse" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="channel" type="xs:string" minOccurs="0"/>
+			<xs:element name="country" type="xs:string" minOccurs="0"/>
+			<xs:element name="nationality" type="xs:string" minOccurs="0"/>
+			<xs:element name="cribs" type="xs:int" minOccurs="0"/>
+			<xs:element name="extraBeds" type="xs:int" minOccurs="0"/>
+			<xs:element name="adultsTaxFree" type="xs:int" minOccurs="0"/>
+			<xs:element name="childrenTaxFree" type="xs:int" minOccurs="0"/>
+			<xs:element name="rateCategory" type="xs:string" minOccurs="0"/>
+			<xs:element name="rateClass" type="xs:string" minOccurs="0"/>
+			<xs:element name="roomRevenue" type="fixed144" minOccurs="0"/>
+			<xs:element name="foodRevenue" type="fixed144" minOccurs="0"/>
+			<xs:element name="otherRevenue" type="fixed144" minOccurs="0"/>
+			<xs:element name="totalRevenue" type="fixed144" minOccurs="0"/>
+			<xs:element name="nonRevenue" type="fixed144" minOccurs="0"/>
+			<xs:element name="allotmentCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="roomRevenueTax" type="fixed144" minOccurs="0"/>
+			<xs:element name="foodRevenueTax" type="fixed144" minOccurs="0"/>
+			<xs:element name="otherRevenueTax" type="fixed144" minOccurs="0"/>
+			<xs:element name="totalRevenueTax" type="fixed144" minOccurs="0"/>
+			<xs:element name="nonRevenueTax" type="fixed144" minOccurs="0"/>
+			<xs:element name="city" type="xs:string" minOccurs="0"/>
+			<xs:element name="zipCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="district" type="xs:string" minOccurs="0"/>
+			<xs:element name="state" type="xs:string" minOccurs="0"/>
+			<xs:element name="children1" type="xs:int" minOccurs="0"/>
+			<xs:element name="children2" type="xs:int" minOccurs="0"/>
+			<xs:element name="children3" type="xs:int" minOccurs="0"/>
+			<xs:element name="children4" type="xs:int" minOccurs="0"/>
+			<xs:element name="children5" type="xs:int" minOccurs="0"/>
+			<xs:element name="ownerFfFlag" type="xs:string" minOccurs="0"/>
+			<xs:element name="ownerRentalFlag" type="xs:string" minOccurs="0"/>
+			<xs:element name="fcGrossRate" type="fixed144" minOccurs="0"/>
+			<xs:element name="fcNetRoomRevenue" type="fixed144" minOccurs="0"/>
+			<xs:element name="fcExtraRevenue" type="fixed144" minOccurs="0"/>
+			<xs:element name="fcRoomRevenue" type="fixed144" minOccurs="0"/>
+			<xs:element name="fcFoodRevenue" type="fixed144" minOccurs="0"/>
+			<xs:element name="fcOtherRevenue" type="fixed144" minOccurs="0"/>
+			<xs:element name="fcTotalRevenue" type="fixed144" minOccurs="0"/>
+			<xs:element name="fcNonRevenue" type="fixed144" minOccurs="0"/>
+			<xs:element name="fcRoomRevenueTax" type="fixed144" minOccurs="0"/>
+			<xs:element name="fcFoodRevenueTax" type="fixed144" minOccurs="0"/>
+			<xs:element name="fcOtherRevenueTax" type="fixed144" minOccurs="0"/>
+			<xs:element name="fcTotalRevenueTax" type="fixed144" minOccurs="0"/>
+			<xs:element name="fcNonRevenueTax" type="fixed144" minOccurs="0"/>
+			<xs:element name="currencyCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="exchangeDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="confirmationID" type="xs:string" minOccurs="0"/>
+			<xs:element name="reservationID" type="xs:string" minOccurs="0"/>
+			<xs:element name="mfConfirmationLegNo" type="xs:int" minOccurs="0"/>
+			<xs:element name="updateBusinessDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="updateDate" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="changeDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="endChangeDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="changeType" type="xs:string" minOccurs="0"/>
+			<xs:element name="changeId" type="xs:string" minOccurs="0"/>
+			<xs:element name="compRoomNts" type="xs:int" minOccurs="0"/>
+			<xs:element name="truncBeginDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="truncEndDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="businessDateCreated" type="xs:date" minOccurs="0"/>
+			<xs:element name="resInsertSource" type="xs:string" minOccurs="0"/>
+			<xs:element name="parentCompanyID" type="xs:int" minOccurs="0"/>
+			<xs:element name="agentID" type="xs:int" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="fixed144">
+		<xs:restriction base="xs:decimal">
+			<xs:totalDigits value="14"/>
+			<xs:fractionDigits value="4"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

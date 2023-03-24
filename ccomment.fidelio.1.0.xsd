@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="ccomment.fidelio.1.0" xmlns="ccomment.fidelio.1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="CentralComment" type = "CentralComment">
+		<xs:annotation>
+			<xs:documentation>CentralComment schema</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="CentralComment">
+		<xs:sequence>
+			<xs:element name="resortID" type="xs:string"/>
+			<xs:element name="pmsProfileID" type="xs:string"/>
+			<xs:element name="comment" type="xs:string"/>
+		</xs:sequence>
+		<xs:attribute name="action" type="action" use="optional"/>
+	</xs:complexType>
+	<xs:simpleType name="action">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="NEW"/>
+			<xs:enumeration value="CHANGE"/>
+			<xs:enumeration value="SYNC"/>
+			<xs:enumeration value="DELETE"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

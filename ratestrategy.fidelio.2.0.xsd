@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="ratestrategy.fidelio.2.0" xmlns="ratestrategy.fidelio.2.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="RateStrategy" type = "RateStrategy">
+		<xs:annotation>
+			<xs:documentation>RateStrategy schema</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="RateStrategy">
+		<xs:sequence>
+			<xs:element name="HotelReference" type="HotelReference"/>
+			<xs:element name="RateStrategyDetails" type="RateStrategyDetails" minOccurs="0"/>
+			<xs:element name="OccBasedRateStrategies" type="OccBasedRateStrategies" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="HotelReference">
+		<xs:sequence>
+			<xs:element name="chainCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="hotelCode" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RateStrategyDetails">
+		<xs:sequence>
+			<xs:element name="RateStrategyDetail" type="RateStrategyDetail" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RateStrategyDetail">
+		<xs:sequence>
+			<xs:element name="rateClass" type="xs:string" minOccurs="0"/>
+			<xs:element name="rateCat" type="xs:string" minOccurs="0"/>
+			<xs:element name="rateCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="roomClass" type="xs:string" minOccurs="0"/>
+			<xs:element name="roomCat" type="xs:string" minOccurs="0"/>
+			<xs:element name="conditionValue" type="xs:int" minOccurs="0"/>
+			<xs:element name="conditionType" type="xs:string" minOccurs="0"/>
+			<xs:element name="conditionValueType" type="xs:string" minOccurs="0"/>
+			<xs:element name="restrictionType" type="xs:string" minOccurs="0"/>
+			<xs:element name="losUnits" type="xs:int" minOccurs="0"/>
+			<xs:element name="restrictionStartDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="restrictionEndDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="DaysOfWeek" type="DaysOfWeek" minOccurs="0"/>
+			<xs:element name="controlStartDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="controlEndDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="daysInAdvanceFrom" type="xs:int" minOccurs="0"/>
+			<xs:element name="daysInAdvanceTo" type="xs:int" minOccurs="0"/>
+			<xs:element name="strategyId" type="xs:string" minOccurs="0"/>
+			<xs:element name="resortStrategyId" type="xs:string" minOccurs="0"/>
+			<xs:element name="applySequence" type="xs:int" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="mfInactiveDate" type="xs:dateTime" use="optional"/>
+		<xs:attribute name="actionType" type="actionType" use="required"/>
+		<xs:attribute name="timeStamp" type="xs:dateTime" use="required"/>
+	</xs:complexType>
+	<xs:simpleType name="actionType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="NEW"/>
+			<xs:enumeration value="CHANGE"/>
+			<xs:enumeration value="DELETE"/>
+			<xs:enumeration value="SYNC"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="DaysOfWeek">
+		<xs:sequence>
+			<xs:element name="monday" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="tuesday" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="wednesday" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="thursday" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="friday" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="saturday" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="sunday" type="xs:boolean" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="OccBasedRateStrategies">
+		<xs:sequence>
+			<xs:element name="OccBasedRateStrategy" type="OccBasedRateStrategy" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="OccBasedRateStrategy">
+		<xs:sequence>
+			<xs:element name="RateStrategyDetail" type="RateStrategyDetail" minOccurs="0"/>
+			<xs:element name="occupancyBasedDiffAmount" type="fixed144" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="fixed144">
+		<xs:restriction base="xs:decimal">
+			<xs:totalDigits value="14"/>
+			<xs:fractionDigits value="4"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="ManagersReport.fidelio.1.0" xmlns="ManagersReport.fidelio.1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="ManagersReport" type = "ManagersReport">
+		<xs:annotation>
+			<xs:documentation>ManagersReport schema</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="ManagersReport">
+		<xs:sequence>
+			<xs:element name="businessDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="roomClass" type="xs:string" minOccurs="0"/>
+			<xs:element name="resort" type="xs:string" minOccurs="0"/>
+			<xs:element name="occRoom" type="xs:int" minOccurs="0"/>
+			<xs:element name="compRoom" type="xs:int" minOccurs="0"/>
+			<xs:element name="houseUseRoom" type="xs:int" minOccurs="0"/>
+			<xs:element name="dayuseRoom" type="xs:int" minOccurs="0"/>
+			<xs:element name="availRoom" type="xs:int" minOccurs="0"/>
+			<xs:element name="oooRooms" type="xs:int" minOccurs="0"/>
+			<xs:element name="osRooms" type="xs:int" minOccurs="0"/>
+			<xs:element name="adrRoomWoCompHouse" type="fixed144" minOccurs="0"/>
+			<xs:element name="averageDailyRevenue" type="fixed144" minOccurs="0"/>
+			<xs:element name="guestInHouse" type="xs:int" minOccurs="0"/>
+			<xs:element name="perOccupancy" type="fixed144" minOccurs="0"/>
+			<xs:element name="perOccWoCompHouse" type="fixed144" minOccurs="0"/>
+			<xs:element name="perOccWoCompHouseOo" type="fixed144" minOccurs="0"/>
+			<xs:element name="arrivalRoom" type="xs:int" minOccurs="0"/>
+			<xs:element name="arrivalPrs" type="xs:int" minOccurs="0"/>
+			<xs:element name="departureRoom" type="xs:int" minOccurs="0"/>
+			<xs:element name="departurePrs" type="xs:int" minOccurs="0"/>
+			<xs:element name="extStayRoom" type="xs:int" minOccurs="0"/>
+			<xs:element name="extStayPrs" type="xs:int" minOccurs="0"/>
+			<xs:element name="earlyDepRoom" type="xs:int" minOccurs="0"/>
+			<xs:element name="earlyDepPrs" type="xs:int" minOccurs="0"/>
+			<xs:element name="walkinRoom" type="xs:int" minOccurs="0"/>
+			<xs:element name="walkinPrs" type="xs:int" minOccurs="0"/>
+			<xs:element name="noshowRoom" type="xs:int" minOccurs="0"/>
+			<xs:element name="noshowPrs" type="xs:int" minOccurs="0"/>
+			<xs:element name="cancelReservation" type="xs:int" minOccurs="0"/>
+			<xs:element name="cancelRooms" type="xs:int" minOccurs="0"/>
+			<xs:element name="lateCancelReservation" type="xs:int" minOccurs="0"/>
+			<xs:element name="lateCancelRooms" type="xs:int" minOccurs="0"/>
+			<xs:element name="reservation" type="xs:int" minOccurs="0"/>
+			<xs:element name="turnaway" type="xs:int" minOccurs="0"/>
+			<xs:element name="tomorrowArrivalRoom" type="xs:int" minOccurs="0"/>
+			<xs:element name="tomorrowArrivalPrs" type="xs:int" minOccurs="0"/>
+			<xs:element name="tomorrowDepartureRoom" type="xs:int" minOccurs="0"/>
+			<xs:element name="tomorrowDeparturePrs" type="xs:int" minOccurs="0"/>
+			<xs:element name="foodBevRevenue" type="fixed144" minOccurs="0"/>
+			<xs:element name="occWeek" type="xs:int" minOccurs="0"/>
+			<xs:element name="occMonth" type="xs:int" minOccurs="0"/>
+			<xs:element name="occYear" type="xs:int" minOccurs="0"/>
+			<xs:element name="roomRevenue" type="fixed144" minOccurs="0"/>
+			<xs:element name="cleanRoom" type="xs:int" minOccurs="0"/>
+			<xs:element name="inspectedRoom" type="xs:int" minOccurs="0"/>
+			<xs:element name="payment" type="fixed144" minOccurs="0"/>
+			<xs:element name="groupRevenue" type="fixed144" minOccurs="0"/>
+			<xs:element name="groupRoom" type="xs:int" minOccurs="0"/>
+			<xs:element name="vipGuest" type="xs:int" minOccurs="0"/>
+			<xs:element name="noOfGroup" type="xs:int" minOccurs="0"/>
+			<xs:element name="groupPrs" type="xs:int" minOccurs="0"/>
+			<xs:element name="groupRoomRev" type="fixed144" minOccurs="0"/>
+			<xs:element name="adultsInHouse" type="xs:int" minOccurs="0"/>
+			<xs:element name="childrenInHouse" type="xs:int" minOccurs="0"/>
+			<xs:element name="otherRevenue" type="fixed144" minOccurs="0"/>
+			<xs:element name="totalRevenue" type="fixed144" minOccurs="0"/>
+			<xs:element name="physicalRoom" type="xs:int" minOccurs="0"/>
+			<xs:element name="occTommorrow" type="xs:int" minOccurs="0"/>
+			<xs:element name="singleOccRoom" type="xs:int" minOccurs="0"/>
+			<xs:element name="multiOccRoom" type="xs:int" minOccurs="0"/>
+			<xs:element name="roomTax" type="fixed144" minOccurs="0"/>
+			<xs:element name="foodBevTax" type="fixed144" minOccurs="0"/>
+			<xs:element name="otherTax" type="fixed144" minOccurs="0"/>
+			<xs:element name="totalTax" type="fixed144" minOccurs="0"/>
+			<xs:element name="groupTax" type="fixed144" minOccurs="0"/>
+			<xs:element name="groupRoomTax" type="fixed144" minOccurs="0"/>
+			<xs:element name="fitGuestsToday" type="xs:int" minOccurs="0"/>
+			<xs:element name="agentRoomsToday" type="xs:int" minOccurs="0"/>
+			<xs:element name="companyRoomsToday" type="xs:int" minOccurs="0"/>
+			<xs:element name="sourceRoomsToday" type="xs:int" minOccurs="0"/>
+			<xs:element name="defArrivalsToday" type="xs:int" minOccurs="0"/>
+			<xs:element name="tntArrivalsToday" type="xs:int" minOccurs="0"/>
+			<xs:element name="dirtyRoomsToday" type="xs:int" minOccurs="0"/>
+			<xs:element name="birthdays" type="xs:int" minOccurs="0"/>
+			<xs:element name="dblsAsSglsToday" type="xs:int" minOccurs="0"/>
+			<xs:element name="cancellationsMadeToday" type="xs:int" minOccurs="0"/>
+			<xs:element name="roomNightsReservedToday" type="xs:int" minOccurs="0"/>
+			<xs:element name="fitRevenueToday" type="fixed144" minOccurs="0"/>
+			<xs:element name="memberTotalTax" type="fixed144" minOccurs="0"/>
+			<xs:element name="memRevenueToday" type="fixed144" minOccurs="0"/>
+			<xs:element name="fitDepToday" type="xs:int" minOccurs="0"/>
+			<xs:element name="fitDepPrsToday" type="xs:int" minOccurs="0"/>
+			<xs:element name="memDepPrsToday" type="xs:int" minOccurs="0"/>
+			<xs:element name="fitMemDepPrs" type="xs:int" minOccurs="0"/>
+			<xs:element name="memInhousePrsToday" type="xs:int" minOccurs="0"/>
+			<xs:element name="bedsAvlToday" type="xs:int" minOccurs="0"/>
+			<xs:element name="cribsToday" type="xs:int" minOccurs="0"/>
+			<xs:element name="averageAgeToday" type="fixed144" minOccurs="0"/>
+			<xs:element name="rollawaysToday" type="xs:int" minOccurs="0"/>
+			<xs:element name="adultsFreeToday" type="xs:int" minOccurs="0"/>
+			<xs:element name="childrenFreeToday" type="xs:int" minOccurs="0"/>
+			<xs:element name="rackRateOcc" type="xs:int" minOccurs="0"/>
+			<xs:element name="yieldAllRooms" type="fixed144" minOccurs="0"/>
+			<xs:element name="yieldOccRooms" type="fixed144" minOccurs="0"/>
+			<xs:element name="rackRateAll" type="xs:int" minOccurs="0"/>
+			<xs:element name="fitRoomsToday" type="xs:int" minOccurs="0"/>
+			<xs:element name="groupRoomsToday" type="xs:int" minOccurs="0"/>
+			<xs:element name="fitMemDepRooms" type="xs:int" minOccurs="0"/>
+			<xs:element name="memDepRoomsToday" type="xs:int" minOccurs="0"/>
+			<xs:element name="fitRoomRevenue" type="fixed144" minOccurs="0"/>
+			<xs:element name="inhouseMaxOccupancy" type="xs:int" minOccurs="0"/>
+			<xs:element name="extNoshowPrs" type="xs:int" minOccurs="0"/>
+			<xs:element name="extNoshowRoom" type="xs:int" minOccurs="0"/>
+			<xs:element name="extNoshowRes" type="xs:int" minOccurs="0"/>
+			<xs:element name="children1" type="xs:int" minOccurs="0"/>
+			<xs:element name="children2" type="xs:int" minOccurs="0"/>
+			<xs:element name="children3" type="xs:int" minOccurs="0"/>
+			<xs:element name="children4" type="xs:int" minOccurs="0"/>
+			<xs:element name="children5" type="xs:int" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="fixed144">
+		<xs:restriction base="xs:decimal">
+			<xs:totalDigits value="14"/>
+			<xs:fractionDigits value="4"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

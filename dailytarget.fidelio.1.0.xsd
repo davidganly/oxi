@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="dailytarget.fidelio.1.0" xmlns="dailytarget.fidelio.1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="dailytarget" type = "dailytarget">
+		<xs:annotation>
+			<xs:documentation>dailytarget schema</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="dailytarget">
+		<xs:sequence>
+			<xs:element name="HotelReference" type="HotelReference"/>
+			<xs:element name="DailyTargetBoundary" type="DailyTargetBoundary"/>
+			<xs:element name="DailyTargetDetails" type="DailyTargetDetails" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="actionType" type="actionType" use="required"/>
+	</xs:complexType>
+	<xs:simpleType name="actionType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="RESYNC"/>
+			<xs:enumeration value="LOAD"/>
+			<xs:enumeration value="EDIT"/>
+			<xs:enumeration value="DELETE"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="HotelReference">
+		<xs:sequence>
+			<xs:element name="chainCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="hotelCode" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DailyTargetBoundary">
+		<xs:sequence>
+			<xs:element name="beginDate" type="xs:date"/>
+			<xs:element name="endDate" type="xs:date"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DailyTargetDetails">
+		<xs:sequence>
+			<xs:element name="DailyTargetDetail" type="DailyTargetDetail" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DailyTargetDetail">
+		<xs:sequence>
+			<xs:element name="beginDate" type="xs:date"/>
+			<xs:element name="endDate" type="xs:date"/>
+			<xs:element name="roomNights" type="xs:int" minOccurs="0"/>
+			<xs:element name="roomRevenue" type="fixed144" minOccurs="0"/>
+			<xs:element name="roomAverageRate" type="fixed144" minOccurs="0"/>
+			<xs:element name="DaysOfWeek" type="DaysOfWeek" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="fixed144">
+		<xs:restriction base="xs:decimal">
+			<xs:totalDigits value="14"/>
+			<xs:fractionDigits value="4"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="DaysOfWeek">
+		<xs:sequence>
+			<xs:element name="monday" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="tuesday" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="wednesday" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="thursday" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="friday" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="saturday" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="sunday" type="xs:boolean" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="itemavailability.fidelio.1.0" xmlns="itemavailability.fidelio.1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="ItemAvailability" type = "ItemAvailability">
+		<xs:annotation>
+			<xs:documentation>ItemAvailability schema</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="ItemAvailability">
+		<xs:sequence>
+			<xs:element name="HotelReference" type="HotelReference"/>
+			<xs:element name="ItemInvCounts" type="ItemInvCounts" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="HotelReference">
+		<xs:sequence>
+			<xs:element name="chainCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="hotelCode" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ItemInvCounts">
+		<xs:sequence>
+			<xs:element name="ItemInvCount" type="ItemInvCount" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ItemInvCount">
+		<xs:sequence>
+		</xs:sequence>
+		<xs:attribute name="itemCode" type="xs:string" use="optional"/>
+		<xs:attribute name="beginDate" type="xs:date" use="optional"/>
+		<xs:attribute name="endDate" type="xs:date" use="optional"/>
+		<xs:attribute name="soldCount" type="xs:int" use="optional"/>
+	</xs:complexType>
+</xs:schema>
