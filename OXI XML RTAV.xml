@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?><?Label OPERA1|RTAV|239847|SUCCESS?>
+<RtavMessage xmlns="rtav.fidelio.4.0" dataMart="0">
+   <HotelReference hotelCode="OPERA1"/>
+   <DailyInventories>
+      <DailyInventory datum="2019-11-21" physicalRooms="642" houseOverbook="0" outOfOrder="0">
+         <Definite count="25" blockCount="0" resvCount="25"/>
+         <RoomTypeInventories>
+            <RoomTypeInventory roomType="JS" generic="0" physicalRooms="40" roomTypeOverbook="0" outOfOrder="0" virtualSuite="0" available="36">
+               <Definite count="4" blockCount="0" resvCount="4"/>
+               <Tentative count="0" blockCount="0" resvCount="0"/>
+            </RoomTypeInventory>
+         </RoomTypeInventories>
+         <RoomClassInventories>
+            <RoomClassInventory roomClass="HOTEL" physicalRooms="642" roomClassOverbook="0" outOfOrder="0">
+               <Definite count="25" blockCount="0" resvCount="25"/>
+            </RoomClassInventory>
+         </RoomClassInventories>
+      </DailyInventory>
+   </DailyInventories>
+</RtavMessage>
